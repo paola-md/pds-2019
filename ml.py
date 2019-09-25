@@ -8,4 +8,7 @@ def data_store(nombre_archivo):
     save(nombre_archivo)
 	
 def run_ml_pipeline():
+
+print("el modelo ha terminado")
+
     return
