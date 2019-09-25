@@ -7,8 +7,5 @@ def clean_data():
 def data_store():
     return
 
-def run_ml():
-    return
-
-def ml_pipeline():
+def run_ml_pipeline():
     return
