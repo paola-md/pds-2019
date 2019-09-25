@@ -4,8 +4,8 @@ def load_data():
 def clean_data():
     return
 
-def data_store():
-    return
-
+def data_store(nombre_archivo):
+    save(nombre_archivo)
+	
 def run_ml_pipeline():
     return
