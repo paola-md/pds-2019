@@ -3,7 +3,7 @@ def load_data():
 
 def clean_data(a,b):
     c = a-b
-    return c
+    return c*2
 
 def data_store(nombre_archivo):
     save(nombre_archivo)
