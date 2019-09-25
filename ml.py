@@ -1,5 +1,5 @@
 def load_data():
-    return
+    return print("Prueba 1")
 
 def clean_data():
     return
