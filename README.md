@@ -1,13 +1,19 @@
-# Proyecto: Set de datos de Comisión de Sentencias Individuales de los Estados Unidos 
-(United States Sentencing Commission Individual Offender Data Sets) 
+# Proyecto: Set de datos de "The Museum of Modern Art" (MoMa) 
+Disponible [aquí](https://github.com/MuseumofModernArt/collection)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
 
 ## Descripción de Entidad
-No sé que sea esto
+Nuestra entidad son los artistas blah blah blah
 
 ## Estrucura de la base de datos
+La base de datos consta de dos tablas: Artists y Artworks.
+Se pueden unir através de la variable ConsituentID que es único para los artistas y múltiple para las obras de arte.
 
 ## Instalación
-Tal vez hacer un contenedor de Docker
+A través de Vagrant se puede ejecutar el proyecto. 
+Vagrant se debe descargar [aquí](https://www.vagrantup.com/downloads.html)
+Archivos disponibles [aquí](https://github.com/ITAM-DS/programming-for-data-science-2019/tree/master/vagrant-ds)
+
 ### Requerimientos
 Para la instalación se requiere tener instalado Python3.
 
