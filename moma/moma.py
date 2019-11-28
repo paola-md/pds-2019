@@ -28,28 +28,33 @@ def moma(ctx):
         with open(sql_file,'r') as sql:
             sql_key = sql_file.stem
             query = str(sql.read())
+            print(query)
             queries[sql_key] = query
     ctx.obj['queries'] = queries
 
-@berka.command()
+@moma.command()
 @click.pass_context
 def create_schemas(ctx):
-    query = ctx.obj['queries'].get('create_schemas')
-    print(query)
+    query=ctx.obj['queries'].get('create_schemas')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
 
-
-@berka.command()
+@moma.command()
 @click.pass_context
 def create_raw_tables(ctx):
     query = ctx.obj['queries'].get('create_raw_tables')
-    print(query)
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
 
-@berka.command()
+
+@moma.command()
 @click.pass_context
-def load_berka(ctx):
+def load_moma(ctx):
     conn = ctx.obj['conn']
     with conn.cursor() as cursor:
-        for data_file in Path(settings.get('BERKADIR')).glob('*.asc'):
+        for data_file in Path(settings.get('MOMADIR')).glob('*.asc'):
             print(data_file)
             table = data_file.stem
             print(table)
@@ -61,19 +66,19 @@ def load_berka(ctx):
             buffer.seek(0)
             cursor.copy_expert(sql_statement, file=buffer)
 
-@berka.command()
+@moma.command()
 @click.pass_context
 def to_cleaned():
     query = ctx.obj['queries'].get('to_cleaned')
     print(query)
 
-@berka.command()
+@moma.command()
 @click.pass_context
 def to_semantic():
     query = ctx.obj['queries'].get('to_semantic')
     print(query)
 
-@berka.command()
+@moma.command()
 @click.pass_context
 def create_features():
     query = ctx.obj['queries'].get('create_features')
@@ -81,4 +86,5 @@ def create_features():
 
 
 if __name__ == '__main__':
-    berka()
+    moma()
+

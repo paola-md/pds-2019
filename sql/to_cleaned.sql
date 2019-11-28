@@ -1,19 +1,46 @@
 -- name: artists
+drop table if exists cleaned.artists;
+
 create table cleaned.artists as (
 	select 
-		ConstituentID::int as artist,
-		DisplayName as artist_name,
-		BeginData as begin_date, /*Si es 0 poner Null*/
-		EndDate as end_date,  /*Si es 0 poner Null*/
-		case when Gender == "Male" then 'M' else 'F' end as gender, 
-)
+		"ConstituentID"::int as artist,
+		"DisplayName" as artist_name,
+		"Nationality" as nationality,
+		case when "Gender" = "Male" then 'M' else 'F' end as gender,
+		make_interval("BeginData"::int,"EndDate"::int) as lifespan,
+		"Wiki QID" as wiki,
+		"ULAN" as ulan
+	from raw.artists	
+);
 
+comment on table cleaned.artists is 'eliminamos la columna artist bio por redundante';
 
-create index cleaned_artists_artist_ix on cleaned.artists (artist)
-create index cleaned_artists_interval_ix on cleaned.artists (interval)
+create index cleaned_artists_artist_ix on cleaned.artists (artist);
+create index cleaned_artists_lifespan_ix on cleaned.artists (lifespan);
 
+drop table if exists cleaned.artworks;
 create table cleaned.artworks as (
 	select 
-		ConstituentID::int as artist,
-		Artist as artist_name
-)
+		"Title" as title,
+		"ConstituentID"::int as artist,
+		to_date("Date", 'YYMMDD') as date_creation,
+		"Medium" as medium,
+		"CreditLine" as creditline,
+		"AccessionNumber" accession,
+		"Classification" as classification,
+		"DateAcquired" as date_acquired,
+		"Cataloged" as cataloged,
+		"ObjectID" as artwork,
+		"URL" as url,
+		"ThumbnailURL" as thumb_url,
+		"Diameter (cm)"::double as diameter_cm,
+		"Depth (cm)"::double as depth_cm, 
+		"Height (cm)"::double as height_cm,
+		"Width (cm)"::double as width_cm
+	from raw.artworks		
+);
+
+comment on table cleaned.artworks is 'eliminamos las columnas que tenemos en artists por integridad al igual que la columna Dimensions porque la información está en otras columnas';
+
+create index cleaned_artworks_artist_ix on cleaned.artworks (artist);
+create index cleaned_artworks_artwork_ix on cleaned.artworks (artwork); 
