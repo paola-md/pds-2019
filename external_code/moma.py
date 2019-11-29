@@ -54,11 +54,11 @@ def create_raw_tables(ctx):
 def load_moma(ctx):
     conn = ctx.obj['conn']
     with conn.cursor() as cursor:
-        for data_file in Path(settings.get('MOMADIR')).glob('*.asc'):
+        for data_file in Path(settings.get('MOMADIR')).glob('*.csv'):
             print(data_file)
             table = data_file.stem
             print(table)
-            sql_statement = f"copy raw.{table} from stdin with csv header delimiter as ';'"
+            sql_statement = f"copy raw.{table} from stdin with csv header delimiter as ','"
             print(sql_statement)
             buffer = io.StringIO()
             with open(data_file,'r') as data:
@@ -68,22 +68,30 @@ def load_moma(ctx):
 
 @moma.command()
 @click.pass_context
-def to_cleaned():
+def to_cleaned(ctx):
     query = ctx.obj['queries'].get('to_cleaned')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
     print(query)
 
 @moma.command()
 @click.pass_context
-def to_semantic():
+def to_semantic(ctx):
     query = ctx.obj['queries'].get('to_semantic')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
     print(query)
 
 @moma.command()
 @click.pass_context
-def create_features():
+def create_features(ctx):
     query = ctx.obj['queries'].get('create_features')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
     print(query)
-
 
 if __name__ == '__main__':
     moma()
