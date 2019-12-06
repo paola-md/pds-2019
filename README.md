@@ -21,11 +21,7 @@ Para la instalación se requiere tener instalado Python3.
 ```
 $ git clone https://github.com/paola-md/pds-2019.git
 ```
-2. Dentro del repositorio, ejecutar los dos scripts de shell. El primero descarga los datos y el segundo extrae los datos y los convierte a formato csv. 
-```
-$ ./getdata.sh
-$ ./ExtractData.sh
-```
+2. ¿Cómo le hacemos para descargar los datos?
 
 
 ## Ejecución
