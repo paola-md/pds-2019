@@ -4,7 +4,7 @@ Disponible [aquí](https://github.com/MuseumofModernArt/collection)
 
 ## Descripción de Entidad
 Nuestra entidad son los artistas blah blah blah
-![Alt text](docs/entidad-relacion.png?raw=true "Title")
+![Alt text](results/entidad-relacion.png?raw=true "Title")
 
 ## Estrucura de la base de datos
 La base de datos consta de dos tablas: Artists y Artworks.
