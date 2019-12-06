@@ -3,6 +3,7 @@ Para este proyecto usamos los datos del **museo de arte moderno**, puedes descag
 
 ## Descripción de Entidad
 La figura muestra el diagrama entidad-relación (ERD) para la base de datos MoMa. Se muestran todos los atributos de las entidades.
+
 ![Alt text](results/entidad-relacion.png?raw=true "Title")
 
 Cada artista (artist) tiene características que, para fines del proyecto, consideramos estáticas como nombre, nacionalidad, género, fecha de nacimento y fecha de muerte. Las obras de arte (artworks) también tienen características estáticas como título, medio, dimensiones y clasificación. Identificamos la fecha de adquisición como una caraterística dinámica.
