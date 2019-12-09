@@ -78,8 +78,7 @@ def create_clean_tables(ctx):
 @moma.command()
 @click.pass_context
 def create_semantic_tables(ctx):
-    query = ctx.obj['queries'].get('create_semantic_tables
-                                   ')
+    query = ctx.obj['queries'].get('create_semantic_tables')
     conn = ctx.obj['conn']
     with conn.cursor() as cur:
         cur.execute(query)
