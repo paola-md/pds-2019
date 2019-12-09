@@ -4,7 +4,7 @@ create schema if not exists semantic;
 drop table if exists semantic.entities cascade;
 create table semantic.entities as (
 	select distinct
-		clasification,
+		classification,
 		department
 		from 
 			cleaned.artworks
