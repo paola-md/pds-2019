@@ -13,7 +13,7 @@ create table cleaned.artists as (
 		to_date(format('19%s',"BeginDate"), 'YYYY') end as birth,
 		case when "EndDate"::int = 0 then NULL else
 		to_date(format('19%s',"EndDate"), 'YYYY') end as death,
-		daterange(birth, death) as lifespan,
+		--daterange(birth, death) as lifespan,
 		"Wiki QID" as wiki,
 		"ULAN" as ulan
 	from raw.artists	
@@ -22,7 +22,6 @@ create table cleaned.artists as (
 comment on table cleaned.artists is 'eliminamos la columna artist bio por redundante';
 
 create index cleaned_artists_artist_ix on cleaned.artists (artist);
-create index cleaned_artists_lifespan_ix on cleaned.artists (lifespan);
 
 drop table if exists cleaned.artworks;
 create table cleaned.artworks as (
