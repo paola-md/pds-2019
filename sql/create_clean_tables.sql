@@ -40,7 +40,7 @@ drop table if exists cleaned.artworks;
 create table cleaned.artworks as (
 	select 
 		"Title" as title,
-		"ConstituentID"::int as artist,
+		string_to_array("ConstituentID",', ')::int[] as artist,
 		case when substring("Date" from '\d{4}')::int = NULL
 		then 
 			NULL
