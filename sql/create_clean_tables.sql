@@ -16,7 +16,7 @@ do $cleaned$ begin
 			"DisplayName" as artist_name,
 			"Nationality" as nationality,
 			case when "Gender" = 'Male' then 'M' else 'F' end as gender,
-			to_date(format('19%s%s%s',"BeginDate"), 'YYYYMMDD') as bod,
+			to_date(format('19%s',"BeginDate"), 'YYYYMMDD') as bod,
 			--daterange(to_date(format('19%s%s%s',"BeginDate"), 'YYYYMMDD'),format('19%s%s%s',"EndDate"), 'YYYYMMDD') as lifespan,
 			"Wiki QID" as wiki,
 			"ULAN" as ulan
@@ -57,11 +57,5 @@ do $cleaned$ begin
 	create index cleaned_artworks_artwork_ix on cleaned.artworks (artwork);
 
 
-	end $cleaned$;
+end $cleaned$;
  
- exception when others then
-    get stacked diagnostics exc_message = message_text;
-    get stacked diagnostics exc_context = pg_exception_context;
-    get stacked diagnostics exc_detail = pg_exception_detail;
-    raise exception E'\n------\n%\n%\n------\n\nCONTEXT:\n%\n', exc_message, exc_detail, exc_context;
-end $$;
