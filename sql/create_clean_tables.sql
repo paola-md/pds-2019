@@ -18,7 +18,7 @@ create table cleaned.artists as (
 		then 
 			NULL 
 		else
-			to_date(format("BeginDate", 'YYYY') 
+			to_date("BeginDate", 'YYYY') 
 		end as birth,
 		case when "EndDate"::int = 0 
 		then 
