@@ -28,23 +28,80 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 La base de datos está estructurada en dos tablas: artists y artworks.
 Se pueden unir através de la variable ConsituentID que es un identificador único para los artistas. 
 
+
 ## Instalación
 A través de Vagrant se puede ejecutar el proyecto. 
 Vagrant se debe descargar [aquí](https://www.vagrantup.com/downloads.html)
 Archivos disponibles [aquí](https://github.com/ITAM-DS/programming-for-data-science-2019/tree/master/vagrant-ds)
 
-### Requerimientos
-Para la instalación se requiere tener instalado Python3.
+Para prender la máquina virtual:
+```
+vagrant up
+vagrant ssh
+```
 
+A continuación, creamos un ambiente virtual
+```
+pyenv virtualenv 3.7.3 moma
+echo ‘moma’ > .python-version 
+```
+
+Creamos el archivo pyproject.toml (contiene las especificaciones de versiones semánticas).
+```
+poetry init 
+poetry add numpy --extras all 
+poetry add toml
+poetry add click 
+poetry add --dev flake8 
+poetry add --dev flake8-docstrings 
+poetry add --dev xdoctest 
+poetry add --dev pydocstyle 
+poetry add --dev black --allow-prereleases 
+poetry add --dev mypy
+poetry add --dev pytest-cov 
+poetry add --dev pytest-mock
+poetry add --dev coverage 
+poetry add --dev tox 
+poetry add --dev towncrier
+
+poetry add --dev sphinx 
+poetry add --dev sphinx_rtd_theme
+
+poetry add psycopg2 --extras all 
+```
+
+## Ejecución
 1. Clonar este repositorio 
 ```
 $ git clone https://github.com/paola-md/pds-2019.git
 ```
-2. ¿Cómo le hacemos para descargar los datos?
+2. Creamos base de datos
+```
+sudo su postgres
+psql 
+create database moma;
+```
+3. Creamos un rol 
+```
+create role moma login ; 
+alter role moma with encrypted password 'marmol'; 
+grant all privileges on database moma to moma;
+```
+Para conectarnos de forma remota usamos
+```
+psql -U moma- d moma -h 0.0.0.0 -W
+```
+4. Una vez creada la base de datos, corremos el archivo
+RUNME.sh que ejecuta moma.py con los scripts sql. 
 
-
-## Ejecución
-
+## Workflow
+1. create squemas
+2. create raw tables
+3. to cleaned
+4. to semantic
+5. cohort new clients
+6. labels
+7. features
 
 
 ## Esto es para nosotros (después lo borramos)
