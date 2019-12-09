@@ -8,14 +8,27 @@ create table cleaned.artists as (
 		"ConstituentID"::int as artist,
 		"DisplayName" as artist_name,
 		"Nationality" as nationality,
-		case when "Gender" = 'Male' then 'M' else 'F' end as gender,
-		case when "BeginDate"::int = 0 then NULL else
-		to_date(format('19%s',"BeginDate"), 'YYYY') end as birth,
-		case when "EndDate"::int = 0 then NULL else
-		to_date(format('19%s',"EndDate"), 'YYYY') end as death,
+		case when "Gender" = 'Male' 
+		then 
+			'M' 
+		else 
+			'F' 
+		end as gender,
+		case when "BeginDate"::int = 0 
+		then 
+			NULL 
+		else
+			to_date(format('19%s',"BeginDate"), 'YYYY') 
+		end as birth,
+		case when "EndDate"::int = 0 
+		then 
+			NULL 
+		else
+			to_date(format('19%s',"EndDate"), 'YYYY') 
+		end as death,
 		--daterange(birth, death) as lifespan,
-		"Wiki QID" as wiki,
-		"ULAN" as ulan
+		"Wiki QID"::int as wiki,
+		"ULAN"::int as ulan
 	from raw.artists	
 );
 
@@ -28,12 +41,19 @@ create table cleaned.artworks as (
 	select 
 		"Title" as title,
 		"ConstituentID"::int as artist,
-		"Date"::Date as date_creation,
+		case when substring("Date" from '\d{4}')::int = NULL
+		then 
+			NULL
+		else
+			to_date(format('19%s',
+					substring("Date" from '\d{4}')),
+			'YYYY')
+		end as  creation,
 		"Medium" as medium,
 		"CreditLine" as creditline,
 		"AccessionNumber" accession,
 		"Classification" as classification,
-		"DateAcquired" as date_acquired,
+		to_date(,"DateAcquired",'YYYY-MM-DD') as acquisition,
 		"Cataloged" as cataloged,
 		"ObjectID" as artwork,
 		"URL" as url,
