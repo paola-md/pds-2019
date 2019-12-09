@@ -9,7 +9,8 @@ create table cleaned.artists as (
 		"DisplayName" as artist_name,
 		"Nationality" as nationality,
 		case when "Gender" = 'Male' then 'M' else 'F' end as gender,
-		to_date(format('19%s',"BeginDate"), 'YYYYMMDD') as bod,
+		case when "BeginDate"::int = 0 then NULL else
+		to_date(format('19%s',"BeginDate"), 'YYYYMMDD') end as bod,
 		--daterange(to_date(format('19%s%s%s',"BeginDate"), 'YYYYMMDD'),format('19%s%s%s',"EndDate"), 'YYYYMMDD') as lifespan,
 		"Wiki QID" as wiki,
 		"ULAN" as ulan
