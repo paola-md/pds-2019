@@ -38,11 +38,11 @@ create table cleaned.artworks as (
 		"ObjectID" as artwork,
 		"URL" as url,
 		"ThumbnailURL" as thumb_url,
-		"Diameter (cm)"::double as diameter,
-		"Depth (cm)"::double as depth, 
-		"Height (cm)"::double as height,
-		"Width (cm)"::double as width,
-		"Duration (sec.)"::double as duration
+		"Diameter (cm)"::numeric(10,2) as diameter,
+		"Depth (cm)"::numeric(10,2) as depth, 
+		"Height (cm)"::numeric(10,2) as height,
+		"Width (cm)"::numeric(10,2) as width,
+		"Duration (sec.)"::numeric(10,2) as duration
 	from raw.artworks		
 );
 
