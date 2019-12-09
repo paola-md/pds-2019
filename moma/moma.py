@@ -69,7 +69,7 @@ def load_moma(ctx):
 @moma.command()
 @click.pass_context
 def create_clean_tables(ctx):
-    query = ctx.obj['queries'].get('create_cleaned_tables')
+    query = ctx.obj['queries'].get('create_clean_tables')
     conn = ctx.obj['conn']
     with conn.cursor() as cur:
         cur.execute(query)
