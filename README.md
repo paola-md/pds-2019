@@ -77,19 +77,19 @@ $ git clone https://github.com/paola-md/pds-2019.git
 ```
 2. Creamos base de datos
 ```
-sudo su postgres
-psql 
-create database moma;
+$ sudo su postgres
+$ psql 
+$ create database moma;
 ```
 3. Creamos un rol 
 ```
-create role moma login ; 
-alter role moma with encrypted password 'marmol'; 
-grant all privileges on database moma to moma;
+$ create role moma login ; 
+$ alter role moma with encrypted password 'marmol'; 
+$ grant all privileges on database moma to moma;
 ```
 Para conectarnos de forma remota usamos
 ```
-psql -U moma- d moma -h 0.0.0.0 -W
+$ psql -U moma- d moma -h 0.0.0.0 -W
 ```
 4. Una vez creada la base de datos, corremos el archivo
 RUNME.sh que ejecuta moma.py con los scripts sql. 
