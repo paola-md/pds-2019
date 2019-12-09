@@ -51,4 +51,4 @@ create table raw.artworks (
   "Duration (sec.)" TEXT
 );
 
-comment on table raw.arists is 'describe las características estáticas de las obras de arte';
+comment on table raw.artworks is 'describe las características estáticas de las obras de arte';
