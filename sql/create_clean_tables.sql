@@ -16,7 +16,8 @@ do $cleaned$ begin
 			"DisplayName" as artist_name,
 			"Nationality" as nationality,
 			case when "Gender" = 'Male' then 'M' else 'F' end as gender,
-			daterange(to_date(format('19%s%s%s',"BeginDate"), 'YYYYMMDD'),format('19%s%s%s',"EndDate"), 'YYYYMMDD') as lifespan,
+			to_date(format('19%s%s%s',"BeginDate"), 'YYYYMMDD') as bod,
+			--daterange(to_date(format('19%s%s%s',"BeginDate"), 'YYYYMMDD'),format('19%s%s%s',"EndDate"), 'YYYYMMDD') as lifespan,
 			"Wiki QID" as wiki,
 			"ULAN" as ulan
 		from raw.artists	
