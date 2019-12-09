@@ -11,6 +11,7 @@ create table cleaned.artists as (
 		case when "Gender" = 'Male' then 'M' else 'F' end as gender,
 		case when "BeginDate"::int = 0 then NULL else
 		to_date(format('19%s',"BeginDate"), 'YYYY') end as birth,
+		case when "EndDate"::int = 0 then NULL else
 		to_date(format('19%s',"EndDate"), 'YYYY') end as death,
 		daterange(birth, death) as lifespan,
 		"Wiki QID" as wiki,
