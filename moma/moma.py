@@ -28,7 +28,7 @@ def moma(ctx):
         with open(sql_file,'r') as sql:
             sql_key = sql_file.stem
             query = str(sql.read())
-            print(query)
+            #print(query)
             queries[sql_key] = query
     ctx.obj['queries'] = queries
 
