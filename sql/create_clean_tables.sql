@@ -18,13 +18,13 @@ create table cleaned.artists as (
 		then 
 			NULL 
 		else
-			to_date(format('19%s',"BeginDate"), 'YYYY') 
+			to_date(format("BeginDate", 'YYYY') 
 		end as birth,
 		case when "EndDate"::int = 0 
 		then 
 			NULL 
 		else
-			to_date(format('19%s',"EndDate"), 'YYYY') 
+			to_date("EndDate", 'YYYY') 
 		end as death,
 		--daterange(birth, death) as lifespan,
 		"Wiki QID" as wiki,
@@ -45,7 +45,7 @@ create table cleaned.artworks as (
 		then 
 			NULL
 		else
-			to_date(format('19%s',
+			to_date(
 					substring("Date" from '\d{4}')),
 			'YYYY')
 		end as  creation,
