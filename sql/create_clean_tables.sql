@@ -53,7 +53,7 @@ create table cleaned.artworks as (
 		"CreditLine" as creditline,
 		"AccessionNumber" accession,
 		"Classification" as classification,
-		to_date(,"DateAcquired",'YYYY-MM-DD') as acquisition,
+		to_date("DateAcquired",'YYYY-MM-DD') as acquisition,
 		"Cataloged" as cataloged,
 		"ObjectID" as artwork,
 		"URL" as url,
