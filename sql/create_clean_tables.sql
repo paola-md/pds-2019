@@ -65,7 +65,7 @@ create table cleaned.artworks as (
 		"Depth (cm)"::numeric(10,2) as depth, 
 		"Height (cm)"::numeric(10,2) as height,
 		"Width (cm)"::numeric(10,2) as width,
-		"Duration (sec.)"::int as duration
+		"Duration (sec.)"::numeric(10,2) as duration
 	from raw.artworks		
 );
 
