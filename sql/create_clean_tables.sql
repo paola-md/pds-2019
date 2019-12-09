@@ -27,11 +27,10 @@ create table cleaned.artists as (
 			to_date("EndDate", 'YYYY') 
 		end as death,
 		daterange(
-			case when "BeginDate"::int = 0 then NULL 
-			else to_date("BeginDate", 'YYYY')
-			,
-			case when "EndDate"::int = 0 then NULL 
-			else to_date("EndDate", 'YYYY') 
+			(case when "BeginDate"::int = 0 then NULL 
+			else to_date("BeginDate", 'YYYY')),
+			(case when "EndDate"::int = 0 then NULL 
+			else to_date("EndDate", 'YYYY')) 
 			) 
 		as lifespan,
 		lower("Wiki QID") as wiki,
