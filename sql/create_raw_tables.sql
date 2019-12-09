@@ -48,7 +48,7 @@ create table raw.artworks (
   "Weight (kg)" TEXT,
   "Width (cm)" TEXT,
   "Seat Height (cm)" TEXT,
-  "Duration (sec.)" TEXTs
+  "Duration (sec.)" TEXT
 );
 
 comment on table raw.arists is 'describe las características estáticas de las obras de arte';
