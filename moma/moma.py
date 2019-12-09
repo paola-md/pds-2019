@@ -24,7 +24,7 @@ def moma(ctx):
     ctx.obj['conn'] = conn
 
     queries = {}
-    for sql_file in Path('sql').glob('*.sql'):
+    for sql_file in Path(settings.get('MOMADIRSQL')).glob('*.sql'):
         with open(sql_file,'r') as sql:
             sql_key = sql_file.stem
             query = str(sql.read())
@@ -54,7 +54,7 @@ def create_raw_tables(ctx):
 def load_moma(ctx):
     conn = ctx.obj['conn']
     with conn.cursor() as cursor:
-        for data_file in Path(settings.get('MOMADIR')).glob('*.csv'):
+        for data_file in Path(settings.get('MOMADIRDATA')).glob('*.csv'):
             print(data_file)
             table = data_file.stem
             print(table)
