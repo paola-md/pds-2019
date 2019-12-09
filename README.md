@@ -45,7 +45,11 @@ A continuación, creamos un ambiente virtual
 pyenv virtualenv 3.7.3 moma
 echo ‘moma’ > .python-version 
 ```
-
+Instalamos poetry
+```
+pyenv shell system curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python 
+pyenv shell -unset 
+```
 Creamos el archivo pyproject.toml (contiene las especificaciones de versiones semánticas).
 ```
 poetry init 
