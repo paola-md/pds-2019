@@ -1,4 +1,4 @@
 [default]
 dburl = 'postgresql://service=moma'
 pgconnstring = 'user=moma dbname=moma port=5432 host=0.0.0.0 password=marmol'
-momadir = '/home/vagrant/pds-2019/moma'
+momadir = '/home/vagrant/pds-2019'
