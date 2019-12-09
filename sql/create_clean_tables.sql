@@ -45,9 +45,7 @@ create table cleaned.artworks as (
 		then 
 			NULL
 		else
-			to_date(
-					substring("Date" from '\d{4}')),
-			'YYYY')
+			to_date(substring("Date" from '\d{4}'),	'YYYY')
 		end as  creation,
 		"Medium" as medium,
 		"CreditLine" as creditline,
