@@ -1,4 +1,3 @@
-
 \echo 'Moma(cleaned)'
 \echo 'Programación para Ciencia de Datos'
 \echo 'Ana, Danahi y Paola'
@@ -16,7 +15,7 @@ do $cleaned$ begin
 
 	create schema if not exists cleaned;
 
-	drop table if exists cleaned.artists;
+	drop table if exists cleaned.artists cascade;
 
 	create table cleaned.artists as (
 		select 
