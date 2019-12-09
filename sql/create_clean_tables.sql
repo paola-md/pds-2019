@@ -26,8 +26,7 @@ create table cleaned.artists as (
 		else
 			to_date("EndDate", 'YYYY') 
 		end as death,
-		daterange(to_date("BeginDate", 'YYYY'),
-		to_date("EndDate", 'YYYY'))
+		daterange(birth, death)
 		as lifespan,
 		lower("Wiki QID") as wiki,
 		"ULAN"::int as ulan
