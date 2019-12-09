@@ -1,6 +1,3 @@
-\echo 'Moma(cleaned)'
-\echo 'Programación para Ciencia de Datos'
-\echo 'Ana, Danahi y Paola'
 \set VERBOSITY terse
 \set ON_ERROR_STOP true
 
