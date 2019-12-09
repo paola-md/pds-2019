@@ -1,4 +1,3 @@
--- name: artists
 drop table if exists cleaned.artists;
 
 create table cleaned.artists as (
@@ -6,8 +5,8 @@ create table cleaned.artists as (
 		"ConstituentID"::int as artist,
 		"DisplayName" as artist_name,
 		"Nationality" as nationality,
-		case when "Gender" = "Male" then 'M' else 'F' end as gender,
-		make_interval("BeginData"::int,"EndDate"::int) as lifespan,
+		case when "Gender" = 'Male' then 'M' else 'F' end as gender,
+		make_interval("BeginDate"::int,"EndDate"::int) as lifespan,
 		"Wiki QID" as wiki,
 		"ULAN" as ulan
 	from raw.artists	
@@ -23,7 +22,7 @@ create table cleaned.artworks as (
 	select 
 		"Title" as title,
 		"ConstituentID"::int as artist,
-		to_date("Date", 'YYMMDD') as date_creation,
+		"Date"::Date as date_creation,
 		"Medium" as medium,
 		"CreditLine" as creditline,
 		"AccessionNumber" accession,
@@ -43,4 +42,4 @@ create table cleaned.artworks as (
 comment on table cleaned.artworks is 'eliminamos las columnas que tenemos en artists por integridad al igual que la columna Dimensions porque la información está en otras columnas';
 
 create index cleaned_artworks_artist_ix on cleaned.artworks (artist);
-create index cleaned_artworks_artwork_ix on cleaned.artworks (artwork); 
+create index cleaned_artworks_artwork_ix on cleaned.artworks (artwork);

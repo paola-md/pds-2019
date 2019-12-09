@@ -19,7 +19,7 @@ comment on table raw.artists is 'describe las características estáticas de los
 
 drop table if exists raw.artworks;
 
-create table raw.arists (
+create table raw.artworks (
   "Title" TEXT,
   "Artist" TEXT,
   "ConstituentID" TEXT,
@@ -40,8 +40,15 @@ create table raw.arists (
   "ObjectID" TEXT,
   "URL" TEXT,
   "ThumbnailURL" TEXT,
+  "Circumference (cm)"  TEXT,
+  "Depth (cm)" TEXT,
+  "Diameter (cm)" TEXT,
   "Height (cm)" TEXT,
-  "Width (cm)" TEXT
+  "Length (cm)" TEXT,
+  "Weight (kg)" TEXT,
+  "Width (cm)" TEXT,
+  "Seat Height (cm)" TEXT,
+  "Duration (sec.)" TEXTs
 );
 
 comment on table raw.arists is 'describe las características estáticas de las obras de arte';
