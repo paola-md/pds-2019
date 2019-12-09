@@ -1,7 +1,3 @@
-\set VERBOSITY terse
-\set ON_ERROR_STOP true
-
-
 do language plpgsql $$ declare
     exc_message text;
     exc_context text;
