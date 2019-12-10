@@ -9,10 +9,10 @@ echo "Raw tables greated"
 ./moma.py load-moma
 echo "Data Loaded"
 
-./moma.py create_clean_tables
+./moma.py create-clean-tables
 echo "Clean tables created"
 
-./moma.py create_semantic_tables
+./moma.py create-semantic-tables
 echo "Semantic tables created"
 
 ./moma.py create-cohort
