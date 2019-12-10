@@ -1,4 +1,5 @@
-create schema if not exists semantic;
+drop schema if exists semantic cascade;
+create schema semantic;
 
 -- Entidad son las clasificaciones
 drop table if exists semantic.entities cascade;

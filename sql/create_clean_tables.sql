@@ -1,13 +1,13 @@
-
-create schema if not exists cleaned;
+drop schema if exists cleaned cascade;
+create schema cleaned;
 
 drop table if exists cleaned.artists cascade;
 
 create table cleaned.artists as (
 	select 
 		"ConstituentID"::int as artist,
-		"DisplayName" as artist_name,
-		"Nationality" as nationality,
+		lower("DisplayName") as artist_name,
+		lower("Nationality") as nationality,
 		case when "Gender" = 'Male' 
 		then 
 			0 
