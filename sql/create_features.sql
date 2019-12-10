@@ -12,7 +12,7 @@ select * from
     from
         labels.classified_department
 ) as aod
-             left join lateral ( -- for loop
+             left join lateral ( 
                select
                   count(distinct artwork) filter(where daterange((aod.as_of_date - interval '5 year')::date, aod.as_of_date::date) @> acquisition) as "artwork_5y",
                   avg(height) mean_heigth
