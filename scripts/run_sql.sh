@@ -1,4 +1,4 @@
-cd moma
+cd ./../moma
 
 ./moma.py create-schemas
 echo "Schemas created"
