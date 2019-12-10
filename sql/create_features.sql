@@ -14,10 +14,11 @@ select * from
 ) as aod
              left join lateral ( -- for loop
                select
-                 count(*) filter(where daterange((aod.as_of_date - interval '2 year')::date, aod.as_of_date::date) @> acquisition) as "COUNT(*, @1M)",
-                 count(*) filter(where daterange((aod.as_of_date - interval '3 year')::date, aod.as_of_date::date) @> acquisition) as "COUNT(*, @3M)",
-                 count(*) as "COUNT(*)"
-                 from semantic.events
+                  count(distinct artwork) filter(where daterange((aod.as_of_date - interval '5 year')::date, aod.as_of_date::date) @> acquisition) as "artwork_5y",
+                  avg(height) mean_heigth
+				  , min(height) min_heigth
+				  , count(*) obras
+				  from semantic.events
                 where aod.artwork = artwork
              ) as t2
                  on true
