@@ -2,8 +2,8 @@
 
 # """
 # La función de este script es ejecutar
-# los archivos sql para crear los esquemas
-# , cargar los datos, limpiar las tablas
+# los archivos sql para crear los esquemas,
+# cargar los datos, limpiar las tablas
 # crear las tablas semanticas, crear los 
 # cohort y las características
 # """
@@ -11,25 +11,25 @@
 cd ./../moma
 
 ./moma.py create-schemas
-echo "Schemas created"
+echo "Esquemas creados"
 
 ./moma.py create-raw-tables
-echo "Raw tables greated"
+echo "Tablas raw creadas"
 
 ./moma.py load-moma
-echo "Data Loaded"
+echo "Datos cargados"
 
 ./moma.py create-clean-tables
-echo "Clean tables created"
+echo "Tablas clean creadas"
 
 ./moma.py create-semantic-tables
-echo "Semantic tables created"
+echo "Tablas semantic creadas"
 
 ./moma.py create-cohort
-echo "Cohort created"
+echo "Cohort creada"
 
 ./moma.py create-labels
-echo "Labels created"
+echo "Labels creadas"
 
 #./moma.py create-features
-echo "Features created"
+echo "Features creadas"
