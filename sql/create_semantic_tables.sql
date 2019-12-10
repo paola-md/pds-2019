@@ -5,11 +5,12 @@ create schema semantic;
 drop table if exists semantic.entities cascade;
 create table semantic.entities as (
 	select distinct
-		classification,
-		department
+		classification
 		from 
 			cleaned.artworks
 );
+
+create index semantic_entities_classification_ix on semantic.entities (classification);
 
 -- Suponemos que un evento es que llegué una obra al museo
 drop table if exists semantic.events cascade;
@@ -23,7 +24,6 @@ create table semantic.events as (
 		classification,
 		acquisition,
 		cataloged,
-		department,
 		artwork,
 		diameter,
 		depth, 
@@ -33,3 +33,5 @@ create table semantic.events as (
 	from 
 	cleaned.artworks
 );
+
+create index semantic_events_classification_ix on semantic.events (classification);
