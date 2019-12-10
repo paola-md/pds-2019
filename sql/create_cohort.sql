@@ -3,8 +3,7 @@ create schema if not exists cohorts;
 
 drop table if exists cohorts.new_arrivals;
 
-create table if not exists 
- as (
+create table if not exists cohorts.new_arrivals as (
 with as_of_dates as (
   select
     generate_series(min(acquisition), max(acquisition), '10 years') as as_of_date
@@ -27,7 +26,8 @@ new_artwork as(
 		depth, 
 		height,
 		width,
-		duration,	
+		duration,
+		
 		aod.as_of_date::date,
 		daterange(
 		(aod.as_of_date - interval '20 year')::date,
@@ -46,5 +46,5 @@ new_artwork as(
 
 select * from
 new_artwork
-where "new?" is true
+where "new?" is true 
 )
