@@ -8,7 +8,7 @@ with outcomes as (
     as_of_date,
     artwork,
     acquisition as event_date,
-    classification as outcome
+    case when classification = "film" then 1 else 0 end as outcome
     from
         cohorts.new_arrivals
 )
@@ -16,11 +16,11 @@ with outcomes as (
 select
   as_of_date
   , artwork
-  , outcome as label
+  ,  bool_or(outcome)::integer as label
   from outcomes
  where
 daterange(as_of_date::date,(as_of_date + interval '30 year')::date) @>  event_date
- group by as_of_date, artwork, outcome
+ group by as_of_date, artwork
 );
 
 create index  labels_classified_department_artwork_ix on labels.classified_department(artwork);
