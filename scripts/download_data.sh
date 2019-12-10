@@ -9,4 +9,6 @@
 # """
 
 echo "Recoleccion de datos"
-wget -i moma_data.txt > ./../data2
+mkdir ./../data2
+curl https://media.githubusercontent.com/media/MuseumofModernArt/collection/master/Artists.csv > ./../data2/Artists.csv
+curl https://media.githubusercontent.com/media/MuseumofModernArt/collection/master/Artworks.csv > ./../data2/Artworks.csv
