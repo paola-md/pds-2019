@@ -20,7 +20,7 @@ select
   from outcomes
  where
 daterange(as_of_date::date,(as_of_date + interval '5 year')::date) @>  event_date
- group by as_of_date, artwork
+ group by as_of_date, artwork, outcomes
 );
 
 create index  labels_classified_department_artwork_ix on labels.classified_department(artwork);
