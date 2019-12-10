@@ -6,11 +6,12 @@ La figura muestra el diagrama entidad-relación (ERD) para la base de datos MoMa
 
 ![Alt text](results/entidad-relacion.png?raw=true "Title")
 
-Cada artista (artist) tiene características que, para fines del proyecto, consideramos estáticas como nombre, nacionalidad, género, fecha de nacimento y fecha de muerte. Las obras de arte (artworks) también tienen características estáticas como título, medio, dimensiones y clasificación. Identificamos la fecha de adquisición como una caraterística dinámica.
+Cada artista (artist) tiene características que, para fines del proyecto, consideramos estáticas como nombre, nacionalidad, género, fecha de nacimento y fecha de muerte. Las obras de arte (artworks) también tienen características estáticas como título, medio, dimensiones y clasificación. Identificamos la fecha de adquisición como una característica dinámica.
 La relación entre los artistas y las obras de arte es de muchos a muchos. Es decir, un artista puede tener muchas obras de arte y una obra de arte puede ser realizada por varios artistas.
+
 Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/collection)
 
-**Tabla describiendo las columnas de la entidad artistas**
+**Descripción de las columnas de la entidad artistas**
 
 |    ﻿elemento   |                         significado                         |                                     observación                                    |
 |:-------------:|:-----------------------------------------------------------:|:----------------------------------------------------------------------------------:|
@@ -26,7 +27,7 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 
 ## Estrucura de la base de datos
 La base de datos está estructurada en dos tablas: artists y artworks.
-Se pueden unir através de la variable ConsituentID que es un identificador único para los artistas. 
+Se pueden unir através de la variable ConstituentID que es un identificador único para los artistas. 
 
 
 ## Instalación
