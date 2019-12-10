@@ -8,7 +8,7 @@ with outcomes as (
     as_of_date,
     artwork,
     acquisition as event_date,
-    case when classification = "film" then 1 else 0 end as outcome
+    "new?" as outcome
     from
         cohorts.new_arrivals
 )
