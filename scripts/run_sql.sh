@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # """
 # La función de este script es ejecutar
 # los archivos sql para crear los esquemas
