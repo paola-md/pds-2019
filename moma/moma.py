@@ -83,6 +83,15 @@ def create_semantic_tables(ctx):
     with conn.cursor() as cur:
         cur.execute(query)
     print(query)
+    
+@moma.command()
+@click.pass_context
+def create_cohort(ctx):
+    query = ctx.obj['queries'].get('create_cohort')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
+    print(query)
 
 @moma.command()
 @click.pass_context
