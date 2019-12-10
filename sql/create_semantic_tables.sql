@@ -11,7 +11,7 @@ create table semantic.entities as (
 			cleaned.artworks
 );
 
-Crear índice
+-- Crear índice
 create index semantic_entities_classification_ix on semantic.entities (classification);
 
 -- Suponemos que un evento es que llegué una obra al museo
