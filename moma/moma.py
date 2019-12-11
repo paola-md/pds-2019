@@ -165,6 +165,21 @@ def create_features(ctx):
     with conn.cursor() as cur:
         cur.execute(query)
     print(query)
+    
+@moma.command()
+@click.pass_context
+def create_joined_table(ctx):
+    '''
+    Crea tablas con nuevas features
+   :param module ctx: subclass of the dict object.
+   :return: 
+   :rtype:
+    '''
+    query = ctx.obj['queries'].get('create_joined_table')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
+    print(query)
 
 if __name__ == '__main__':
     moma()
