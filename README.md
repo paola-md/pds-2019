@@ -141,7 +141,7 @@ RUNME.sh que ejecuta moma.py con los scripts sql.
 2. create raw tables
 3. to cleaned
 4. to semantic
-5. cohort new clients
+5. cohort new arrivals
 6. labels
 7. features
 
@@ -303,6 +303,24 @@ Definimos el grupo de interés  new_arrivals y la periodicidad con la que se rea
  duration       │ numeric(10,2) │           │          │ 
  as_of_date     │ date          │           │          │ 
  new?           │ boolean       │           │          │ 
+```
+Crear etiquetas que nos ayudaran a clasificar en el futuro en el esquema labels
+```
+\d labels.classified_department  
+
+```
+
+```
+         Table "labels.classified_department"
+   Column   │  Type   │ Collation │ Nullable │ Default 
+════════════╪═════════╪═══════════╪══════════╪═════════
+ as_of_date │ date    │           │          │ 
+ artwork    │ integer │           │          │ 
+ label      │ integer │           │          │ 
+Indexes:
+    "labels_classified_department_artwork_as_of_date_ix" btree (artwork, as_of_date)
+    "labels_classified_department_artwork_ix" btree (artwork)
+    "labels_classified_department_as_of_date_ix" btree (as_of_date)
 ```
 
 
