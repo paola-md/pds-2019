@@ -31,5 +31,5 @@ echo "Cohort creada"
 ./moma.py create-labels
 echo "Labels creadas"
 
-#./moma.py create-features
+./moma.py create-features
 echo "Features creadas"
