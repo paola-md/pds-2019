@@ -174,6 +174,9 @@ La salida debería ser la siguiente:
 Observamos que las tablas raw fueran creadas después de crear el esquema
 ```
 \dt raw.
+```
+
+```
          List of relations
  Schema │   Name   │ Type  │ Owner 
 ════════╪══════════╪═══════╪═══════
@@ -184,6 +187,9 @@ Observamos que las tablas raw fueran creadas después de crear el esquema
 Observamos los datos después de ejecutar el esquema de limpieza
 ```
  \d cleaned.artists
+```
+
+```
                 Table "cleaned.artists"
    Column    │  Type   │ Collation │ Nullable │ Default 
 ═════════════╪═════════╪═══════════╪══════════╪═════════
@@ -202,6 +208,9 @@ Indexes:
     
 ```    
 \d cleaned.artworks
+```
+
+```
                     Table "cleaned.artworks"
      Column     │     Type      │ Collation │ Nullable │ Default 
 ════════════════╪═══════════════╪═══════════╪══════════╪═════════
@@ -231,6 +240,9 @@ En la relación a nuestro objetivo sobre clasificar si una obra de arte entrante
 
 ```
 \d semantic.entities
+```
+
+```
                Table "semantic.entities"
      Column     │ Type │ Collation │ Nullable │ Default 
 ════════════════╪══════╪═══════════╪══════════╪═════════
@@ -240,7 +252,10 @@ Indexes:
 ```
 
 ```
-\d semantic.events            
+\d semantic.events 
+```
+
+```
                      Table "semantic.events"
      Column     │     Type      │ Collation │ Nullable │ Default 
 ════════════════╪═══════════════╪═══════════╪══════════╪═════════
@@ -265,7 +280,10 @@ Indexes:
 Definimos el grupo de interés  new_arrivals y la periodicidad con la que se realizará la ejecución del algoritmo de ML en el esquema de cohorts. La estructura de la tabla es la siguiente:
 
 ```
-cohorts.new_arrivals 
+\d cohorts.new_arrivals 
+```
+
+```
                   Table "cohorts.new_arrivals"
      Column     │     Type      │ Collation │ Nullable │ Default 
 ════════════════╪═══════════════╪═══════════╪══════════╪═════════
