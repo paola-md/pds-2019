@@ -7,6 +7,8 @@
 
 cd scripts
 
+./create_virutal_env.sh
+echo "================== Ambiente virtual creado =================="
 ./create_db.sh
 echo "================== Base de datos y usuarios creados =================="
 ./download_data.sh
