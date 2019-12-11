@@ -160,6 +160,12 @@ def create_features(ctx):
    :return: 
    :rtype:
     '''
+    query = ctx.obj['queries'].get('create_features_summary')
+    conn = ctx.obj['conn']
+    with conn.cursor() as cur:
+        cur.execute(query)
+    print(query)
+    
     query = ctx.obj['queries'].get('create_features')
     conn = ctx.obj['conn']
     with conn.cursor() as cur:
