@@ -40,11 +40,11 @@ def moma(ctx):
 @moma.command()
 @click.pass_context
 def create_schemas(ctx):
-'''Crea esquemas ejecutando comandos de SQL
+    """Crea esquemas ejecutando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
-   '''
+   """ 
     query=ctx.obj['queries'].get('create_schemas')
     conn = ctx.obj['conn']
     with conn.cursor() as cur:
@@ -53,7 +53,7 @@ def create_schemas(ctx):
 @moma.command()
 @click.pass_context
 def create_raw_tables(ctx):
-'''Crea tablas en el esquema raw ejecutando comandos de SQL
+    '''Crea tablas en el esquema raw ejecutando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
@@ -67,7 +67,7 @@ def create_raw_tables(ctx):
 @moma.command()
 @click.pass_context
 def load_moma(ctx):
-'''Carga los datos de MoMa en el esquema raw ejecutando comandos de SQL
+    '''Carga los datos de MoMa en el esquema raw ejecutando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
@@ -89,7 +89,8 @@ def load_moma(ctx):
 @moma.command()
 @click.pass_context
 def create_clean_tables(ctx):
-'''Envia tablas del esquema raw a create clean tables esquema con comandos de SQL
+    '''
+    Envia tablas del esquema raw a create clean tables esquema con comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
@@ -103,7 +104,9 @@ def create_clean_tables(ctx):
 @moma.command()
 @click.pass_context
 def create_semantic_tables(ctx):
-'''Envia tablas del esquema  create clean tables al esquema create semantic tables usando comandos de SQL
+    '''
+    Envia tablas del esquema  create clean tables al esquema 
+    create semantic tables usando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
@@ -117,7 +120,8 @@ def create_semantic_tables(ctx):
 @moma.command()
 @click.pass_context
 def create_cohort(ctx):
-'''Crea tablas cohort de tablas del esquema semantic con comandos de SQL
+    '''
+    Crea tablas cohort de tablas del esquema semantic con comandos de SQL
    :param module ctx: subclass of the dict object.
    :return: 
    :rtype:
@@ -131,7 +135,8 @@ def create_cohort(ctx):
 @moma.command()
 @click.pass_context
 def create_labels(ctx):
-'''Crea tablas en el esquema labels
+    '''
+    Crea tablas en el esquema labels
    :param module ctx: subclass of the dict object.
    :return: 
    :rtype:
@@ -145,7 +150,8 @@ def create_labels(ctx):
 @moma.command()
 @click.pass_context
 def create_features(ctx):
-'''Crea tablas con nuevas features
+    '''
+    Crea tablas con nuevas features
    :param module ctx: subclass of the dict object.
    :return: 
    :rtype:
