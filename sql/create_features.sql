@@ -13,7 +13,7 @@ create table if not exists features.aggregated as
 										,count(*) as "totals"
 										from semantic.events where aod.classification=classification) 
 										as t2 on true
-				) t1
+				);
 			             
 create index  labels_classified_department_artwork_ix on labels.classified_department(artwork);
 create index  labels_classified_department_as_of_date_ix on labels.classified_department(as_of_date);
