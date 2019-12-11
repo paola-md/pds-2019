@@ -159,13 +159,13 @@ $ sudo su postgres
 $ psql 
 $ create database moma;
 ```
-	- Creamos un rol 
+Creamos un rol 
 ```
 $ create role moma login ; 
 $ alter role moma with encrypted password 'marmol'; 
 $ grant all privileges on database moma to moma;
 ```
-	- Para conectarnos de forma remota usamos
+Para conectarnos de forma remota usamos
 ```
 $ psql -U moma- d moma -h 0.0.0.0 -W
 ```
