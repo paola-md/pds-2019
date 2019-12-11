@@ -1,8 +1,19 @@
 # Proyecto: Set de datos de "The Museum of Modern Art" (MoMA) 
 Para este proyecto usamos los datos del **museo de arte moderno**, puedes descagrar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
 
+### Situación retorica
+Después de largas platicas con los curadores del MoMa identificamos el problema. Aproximadamente 23% de las pieces adqueridas por el museo son fotografías. Para proteger las fotografías, se les agrega una capa de aglutinante que es muy caro, caduca muy rápido y tarda 2 meses en llegar al museo. Por un lado, el museo pierde dinero si tiene aglutinante de más ya que caduca y no se usa. Por otro lado, el museo también pierde dinero si le falta aglutinante ya que las piezas ocupan espacio y demoran los demás tratamientos. Asimismo, del momemnto en el que museo adquiere una pieza al momento en el que llega la pieza al museo transcurre en promedio 2 meses. Sin embargo, el museo no recibe si la obra es una fotografía o no, solo recibe la información de la obra como el titulo, autor y dimensiones. 
+
+Tomando eso en cuenta, el objetivo es predecir en esos 2 meses, cuántas fotografías llegarán al museo y de qué dimensiones. Es decir, una vez que la obra fue adquerida, utilizar la información para clasificarla como fotografía o no y poder pedir por adelantado la cantidad exacta de aglutinante que se va a usar. Como resultado, se esperan ahorros y beneficios para el MoMa.
+
+### Objetivo
 Nuestro objetivo es clasificar si una obra de arte entrante es fotografía o no. En este proyecto no se soluciona el anterior problema de Machine Learning, sin embargo se evalúa haciendo uso de Python, SQL y bash para crear y limpiar la base de datos de MoMA así como también crear nuevas features.
-## Descripción de Entidad
+
+## Estrucura de la base de datos
+La base de datos está estructurada en dos tablas: artists y artworks.
+Se pueden unir através de la variable ConstituentID que es un identificador único para los artistas. 
+
+## Descripción de los datos
 La figura muestra el diagrama entidad-relación (ERD) para la base de datos MoMa. Se muestran todos los atributos de las entidades.
 
 ![Alt text](results/entidad-relacion.png?raw=true "Title")
@@ -62,10 +73,6 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 |Duration..sec..|	duración de la obra de arte en segundos|	en caso de que aplique, en la mayoría de los casos no aplica|
 
 
-## Estrucura de la base de datos
-La base de datos está estructurada en dos tablas: artists y artworks.
-Se pueden unir através de la variable ConstituentID que es un identificador único para los artistas. 
-
 
 ## Instalación
 A través de Vagrant se puede ejecutar el proyecto. 
@@ -77,7 +84,6 @@ Para prender la máquina virtual:
 vagrant up
 vagrant ssh
 ```
-
 
 ## Ejecución
 1. Clonar este repositorio 
@@ -98,16 +104,17 @@ pyenv shell --unset
 source $HOME/.poetry/env
 ```
 
-4. Ejecutar el archivo RUNME.sh que ejecuta moma.py con los scripts sql. 
+4. Ejecutar el archivo RUNME.sh
 ```
 $ ./RUNME.sh
 ```
+5. Ver carpeta tests para la comprobación de las tablas que se crearon.
 
 ## ¿Qué hace el archivo RUNME?
-1. Construye el ambiente virtual moma
-2. Crea la base de datos el psql
-3. Descarga los datos
-4. Corre los archivos SQL
+1. Construye el ambiente virtual moma (create_virual_env.sh)
+2. Crea la base de datos el psql (create_db.sh)
+3. Descarga los datos (download_data.sh)
+4. Corre los archivos SQL (run_sql.sh)
 
 ## ¿Cómo se hizo la magia?
 0. Carpetas
@@ -152,20 +159,19 @@ En el RUNME esto no se ejecuta de nuevo. En cambio se utiliza el archivo pyproje
 poetry install 
 ```
 
-
 2. Creamos base de datos
 ```
 $ sudo su postgres
 $ psql 
 $ create database moma;
 ```
-	- Creamos un rol 
+Creamos un rol 
 ```
 $ create role moma login ; 
 $ alter role moma with encrypted password 'marmol'; 
 $ grant all privileges on database moma to moma;
 ```
-	- Para conectarnos de forma remota usamos
+Para conectarnos de forma remota usamos
 ```
 $ psql -U moma- d moma -h 0.0.0.0 -W
 ```
