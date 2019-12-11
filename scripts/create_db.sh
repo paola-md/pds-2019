@@ -4,9 +4,8 @@
 sudo su postgres 
 
 # Creación de credenciales: usuario y contraseña
-psql -c "CREATE USER moma with PASSWORD 'marmol';" 
+psql -c "CREATE USER moma2 with PASSWORD 'marmol';" 
 
 
 # Creación de BD 
-psql -c "CREATE DATABASE moma OWNER moma"
-
+psql -c "CREATE DATABASE moma2 OWNER moma2;"
