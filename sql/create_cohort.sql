@@ -5,9 +5,9 @@ drop table if exists cohorts.new_arrivals;
 -- Crear tabla cohorts.new_arrivals en el esquema cohorts
 create table if not exists cohorts.new_arrivals as (
 with as_of_dates as (
--- Generar as_of_date cada 10 años
+-- Generar as_of_date cada 2 meses
   select
-    generate_series(min(acquisition), max(acquisition), '10 years') as as_of_date
+    generate_series(min(acquisition), max(acquisition), '2 month') as as_of_date
     from
         semantic.events
 ),
@@ -31,7 +31,7 @@ new_artwork as(
 		
 		aod.as_of_date::date,
 		daterange(
-		(aod.as_of_date - interval '20 year')::date,
+		(aod.as_of_date - interval '4 month')::date,
 		aod.as_of_date::date)
 		@> acquisition as "new?"
 	from (
