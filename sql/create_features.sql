@@ -1,6 +1,6 @@
 create schema if not exists features;
 
-drop table if exists features.aggregated;
+drop table if exists features.aggregated cascade;
 
 create table if not exists features.aggregated as 
 			  (select 
