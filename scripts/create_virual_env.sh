@@ -5,9 +5,4 @@
 # un ambiente virtual a partir del poetry.lock
 # """
 cd ..
-pyenv shell system
-curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-pyenv shell --unset
-
-source $HOME/.poetry/env
 poetry install
