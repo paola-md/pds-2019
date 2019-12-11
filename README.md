@@ -166,7 +166,7 @@ La salida debería ser la siguiente:
 ```
 * raw: copia de la base de datos de MoMA
 * cleaned: limpieza de la base de datos
-* semantic: tranformación de datos a entidades (artists, artworks) y eventos (Nueva llegada de obra de arte al museo)
+* semantic: tranformación de datos a entidades (classification) y eventos (Nueva llegada de obra de arte al museo)
 * cohort: define as_of_dates para un cierto periodo
 * labels: crea etiquetas para las observaciones de los periodos
 * features: creación de nuevas features
@@ -224,7 +224,40 @@ Indexes:
     "cleaned_artworks_artist_ix" btree (artist)
     "cleaned_artworks_artwork_ix" btree (artwork)
 ```
+En la relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic
 
+```
+\d semantic.entities
+               Table "semantic.entities"
+     Column     │ Type │ Collation │ Nullable │ Default 
+════════════════╪══════╪═══════════╪══════════╪═════════
+ classification │ text │           │          │ 
+Indexes:
+    "semantic_entities_classification_ix" btree (classification)
+```
+
+```
+\d semantic.events            
+                     Table "semantic.events"
+     Column     │     Type      │ Collation │ Nullable │ Default 
+════════════════╪═══════════════╪═══════════╪══════════╪═════════
+ title          │ text          │           │          │ 
+ artist         │ integer[]     │           │          │ 
+ creation       │ date          │           │          │ 
+ medium         │ text          │           │          │ 
+ creditline     │ text          │           │          │ 
+ classification │ text          │           │          │ 
+ acquisition    │ date          │           │          │ 
+ cataloged      │ integer       │           │          │ 
+ artwork        │ integer       │           │          │ 
+ diameter       │ numeric(10,2) │           │          │ 
+ depth          │ numeric(10,2) │           │          │ 
+ height         │ numeric(10,2) │           │          │ 
+ width          │ numeric(10,2) │           │          │ 
+ duration       │ numeric(10,2) │           │          │ 
+Indexes:
+    "semantic_events_classification_ix" btree (classification)
+```
 
 ## Esto es para nosotros (después lo borramos)
 6.2 ¿ Qué debo de hacer?
