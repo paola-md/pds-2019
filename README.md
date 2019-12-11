@@ -24,10 +24,25 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 | EndDate       | fecha de muerte                                             |                                                                                    |
 | Wiki QID      | identificador de Wikidata                                   | muchos valores faltantes                                                           |
 | ULAN          | identificador de "Union List of Artist Names"               | muchos valores faltantes                                                           |
-**Descripción de las columnas de la entidad artistas**
+
+
+**Descripción de las columnas de la entidad obras de arte**
 
 |    ﻿elemento   |                         significado                         |                                     observación                                    |
 |:-------------:|:-----------------------------------------------------------:|:----------------------------------------------------------------------------------:|
+| Title         | título de la obra                                           |                                                                                    |
+| Artist        | nombre y apellido del artista                               | 
+                         |
+| ConstituentID | identificador único de cada artista	                        | 
+                         |
+| ArtistBio     | concatena la nacionalidad con el año de nacimiento y muerte del artista  | 
+                         |
+| Nationality   | nacionalidad del artista                                    |                                                                                    |
+| Gender        | género del artista                                          | el género viene indicado con la palabra "Male" o "Female"                          |
+| BeginDate     | fecha de nacimiento                                         |                                                                                    |
+| EndDate       | fecha de muerte                                             |                                                                                    |
+| Wiki QID      | identificador de Wikidata                                   | muchos valores faltantes                                                           |
+| ULAN          | identificador de "Union List of Artist Names"               | muchos valores faltantes                                                           |
 | ConstituentID | identificador único de cada artista                         |                                                                                    |
 | DisplayName   | nombre y apellido del artista                               | algunos nombres contienen segundos nombres entre paréntesis o únicamente iniciales |
 | ArtistBio     | concatena la nacionalidad con el año de nacimiento y muerte | cuando el artista no ha muerto utiliza la palabra born                             |
