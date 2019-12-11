@@ -28,30 +28,37 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 
 **Descripción de las columnas de la entidad obras de arte**
 
-|    ﻿elemento   |                         significado                         |                                     observación                                    |
+|    elemento   |                         significado                         |                                     observación                                    |
 |:-------------:|:-----------------------------------------------------------:|:----------------------------------------------------------------------------------:|
-| Title         | título de la obra                                           |                                                                                    |
-| Artist        | nombre y apellido del artista                               | 
-                         |
-| ConstituentID | identificador único de cada artista	                        | 
-                         |
-| ArtistBio     | concatena la nacionalidad con el año de nacimiento y muerte del artista  | 
-                         |
-| Nationality   | nacionalidad del artista                                    |                                                                                    |
-| Gender        | género del artista                                          | el género viene indicado con la palabra "Male" o "Female"                          |
-| BeginDate     | fecha de nacimiento                                         |                                                                                    |
-| EndDate       | fecha de muerte                                             |                                                                                    |
-| Wiki QID      | identificador de Wikidata                                   | muchos valores faltantes                                                           |
-| ULAN          | identificador de "Union List of Artist Names"               | muchos valores faltantes                                                           |
-| ConstituentID | identificador único de cada artista                         |                                                                                    |
-| DisplayName   | nombre y apellido del artista                               | algunos nombres contienen segundos nombres entre paréntesis o únicamente iniciales |
-| ArtistBio     | concatena la nacionalidad con el año de nacimiento y muerte | cuando el artista no ha muerto utiliza la palabra born                             |
-| Nationality   | nacionalidad del artista                                    |                                                                                    |
-| Gender        | género del artista                                          | el género viene indicado con la palabra "Male" o "Female"                          |
-| BeginDate     | fecha de nacimiento                                         |                                                                                    |
-| EndDate       | fecha de muerte                                             |                                                                                    |
-| Wiki QID      | identificador de Wikidata                                   | muchos valores faltantes                                                           |
-| ULAN          | identificador de "Union List of Artist Names"               | muchos valores faltantes                                                           |
+|Title|	titulo de la obra|  |	
+|Artist	|nombre y apellido del artista | |	
+|ConstituentID | identificador único de cada artista	| |
+|ArtistBio | concatena la nacionalidad con el año de nacimiento y muerte del artista	 | |
+|Nationality|	nacionalidad del artista | |	
+|BeginDate |	fecha de nacimiento del artista | |	
+|EndDate |	fecha de muerte del artista	| |
+|Gender |	género del artista | |	
+|Date |	año de creación de la obra de arte	| |
+|Medium|  	materiales con los que la obra de arte fue elaborada | |	
+|Dimensions |	altura y anchura de la obra de arte expresado en in y cm ||	
+|CreditLine  |	línea de crédito de la obra de arte	| |
+|AccessionNumber | 	número de acceso de la obra de arte | |	
+|Classification|	tipo de obra de arte	| |
+|Department  |	departamento de la obra de arte	| |
+|DateAcquired| 	año en que MoMA adquirio la obra de arte | |	
+|Cataloged |	si la obra de arte está o no está catalogada | |	
+|ObjectID |	identificador único de la obra de arte | |	
+|URL  |	URL de la obra de arte en página web de Moma	| |
+|ThumbnailURL |	URL en miniatura de la obra de arte en la página web del MoMA| |
+|Circumference..cm.	|circunferencia de la obra de arte en cm	en caso de que aplique
+|Depth..cm.   	|profundidad de la obra de arte en cm|	en caso de que aplique, en la mayoría de los casos no aplica |
+|Diameter..cm. |	diametro de la obra de arte en cm	|en caso de que aplique, en la mayoría de los casos no aplica|
+|Height..cm.|	altura de la obra de arte en cm	|en caso de que aplique, en la mayoría de los casos no aplica|
+|Length..cm. |	longitud de la obra de en cm|	en caso de que aplique, en la mayoría de los casos no aplica|
+|Weight..kg. |	peso de la obra de arte en kg|	en caso de que aplique, en la mayoría de los casos no aplica|
+|Width..cm. | 	achura de la obra de arte en cm|	en caso de que aplique, en la mayoría de los casos no aplica|
+|Seat.Height..cm. |	altura del lugar de la obra de arte en cm|	columna vacía|
+|Duration..sec..|	duración de la obra de arte en segundos|	en caso de que aplique, en la mayoría de los casos no aplica|
 
 
 ## Estrucura de la base de datos
