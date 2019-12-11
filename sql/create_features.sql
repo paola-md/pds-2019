@@ -20,7 +20,7 @@ create table if not exists features.aggregated as
 					, max(duration) max_duration
 				    , count(*) obras
 				  from semantic.events
-               group by classification ) t1
+               group by classification )
 			             
 create index features_aggregated_artwork_ix on features.aggregated(artwork);
 
