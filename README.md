@@ -184,21 +184,22 @@ $ psql -U moma- d moma -h 0.0.0.0 -W
 El flujo de trabajo fue el siguiente
 1. create squemas
 	- Se crearon los esquemas para organizar las tablas
+	* esquemas: raw, cleaned, semantic, cohorts, labels, features     
 2. create raw tables
 	- Se copiaron las columnas de las dos tablas de datos como tipo texto
 	* Se creo raw.artists y raw.artworks
 3. to cleaned
-	- Se elimiaron las variables redundantes y se codificó cada
+	- Se elimiaron las variables redundantes y se codificó cada variable
 	* Se creo cleaned.artists y cleaned.artworks
 4. to semantic
-	- Se elimiaron las variables redundantes y se codificó cada
-	* Se creo cleaned.artists y cleaned.artworks
+	- Se transformaron los datos a entidades y eventos
+	* entidad: classification; evento: llegada de una obra de arte al múseo
 5. cohort 
-	- Se elimiaron las variables redundantes y se codificó cada
-	* Se creo cleaned.artists y cleaned.artworks
+	- Se selecciona el grupo que se clasificará y la periodicidad con la que se realizará la clasificación
+	* periodicidad 2 meses, grupo a clasificar: nuevas obras entrantes al museo 
 6. labels
-	- Se elimiaron las variables redundantes y se codificó cada
-	* Se creo cleaned.artists y cleaned.artworks
+	- Se crean etiquetas de las observaciones en cada periodo
+	* etiqueta 'photograph'
 7. features
-	- Se elimiaron las variables redundantes y se codificó cada
-	* Se creo cleaned.artists y cleaned.artworks
+	- Se crean nuevas features que ayuden a clasificar las observaciones
+	
