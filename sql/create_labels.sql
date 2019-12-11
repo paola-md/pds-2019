@@ -1,6 +1,6 @@
 create schema if not exists labels;
 
-drop table if exists labels.classified_department;
+drop table if exists labels.classified_department cascade;
 create table if not exists labels.classified_department as (
 
 with outcomes as (
@@ -18,7 +18,7 @@ select
   , artwork
   , bool_or(outcome)::integer as label
   from outcomes
- -- where daterange(as_of_date::date,(as_of_date + interval '1 month')::date) @>  event_date
+  where daterange(as_of_date::date,(as_of_date + interval '1 year')::date) @>  event_date
  group by as_of_date, artwork
 );
 
