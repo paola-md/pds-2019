@@ -193,3 +193,44 @@ Indexes:
 ```
 
 
+```
+\d features.aggregated 
+```
+
+```
+                Table "features.aggregated"
+     Column     │  Type   │ Collation │ Nullable │ Default
+════════════════╪═════════╪═══════════╪══════════╪═════════
+ classification │ text    │           │          │
+ artwork        │ bigint  │           │          │
+ min_heigth     │ numeric │           │          │
+ mean_heigth    │ numeric │           │          │
+ max_heigth     │ numeric │           │          │
+ min_diameter   │ numeric │           │          │
+ mean_diameter  │ numeric │           │          │
+ max_diameter   │ numeric │           │          │
+ min_widht      │ numeric │           │          │
+ mean_width     │ numeric │           │          │
+ max_width      │ numeric │           │          │
+ min_duration   │ numeric │           │          │
+ avg_duration   │ numeric │           │          │
+ max_duration   │ numeric │           │          │
+ obras          │ bigint  │           │          │
+Indexes:
+    "features_aggregated_artwork_ix" btree (artwork)
+```
+
+Algunos selects útiles para verificar la información
+
+```
+select * from raw.artists limit 10;
+select * from raw.artworks limit 10;
+select * from clean.artworks limit 10;
+select * from clean.artists limit 10;
+select * from semantic.entities  limit 10;
+select * from semantic.events  limit 10;
+select * from cohorts.new_arrivals  limit 10;
+select * from labels.classified_department  limit 10;
+select * from features.aggregated limit 10;
+```
+
