@@ -41,3 +41,8 @@ create table semantic.events as (
 
 -- Crear índice
 create index semantic_events_classification_ix on semantic.events (classification);
+create index semantic_events_acquisition_ix on semantic.events (acquisition);
+create index semantic_events_height_ix on semantic.events (height);
+create index semantic_events_depth_ix on semantic.events (depth);
+create index semantic_events_diameter_ix on semantic.events (diameter);
+create index semantic_events_duration_ix on semantic.events (duration);
