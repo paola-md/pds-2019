@@ -192,7 +192,7 @@ Indexes:
     "labels_classified_department_as_of_date_ix" btree (as_of_date)
 ```
 
-
+Creamos características de las diferentes categorias.
 ```
 \d features.aggregated 
 ```
