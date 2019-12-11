@@ -165,10 +165,15 @@ La salida debería ser la siguiente:
 
 ```
 raw: copia de la base de datos de MoMA
+
 cleaned: limpieza de la base de datos
+
 semantic: tranformación de datos a entidades (artists, artworks) y eventos (Nueva llegada de obra de arte al museo)
+
 cohort: define as_of_dates para un cierto periodo
+
 labels: crea etiquetas para las observaciones de los periodos
+
 features: creación de nuevas features
 
 ## Esto es para nosotros (después lo borramos)
