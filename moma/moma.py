@@ -18,10 +18,11 @@ from pathlib import Path
 @click.group()
 @click.pass_context
 def moma(ctx):
-    """Crear coneccion con  la base de datos en postgres
-        :param module ctx: subclase
-        :return:
-        :rtype:
+    """
+    Crear coneccion con  la base de datos en postgres
+    :param module ctx: subclase
+    :return:
+    :rtype:
     """
     ctx.ensure_object(dict)
     conn = psycopg2.connect(settings.get('PGCONNSTRING'))
@@ -40,7 +41,8 @@ def moma(ctx):
 @moma.command()
 @click.pass_context
 def create_schemas(ctx):
-    """Crea esquemas ejecutando comandos de SQL
+    """
+    Crea esquemas ejecutando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
@@ -53,7 +55,8 @@ def create_schemas(ctx):
 @moma.command()
 @click.pass_context
 def create_raw_tables(ctx):
-    '''Crea tablas en el esquema raw ejecutando comandos de SQL
+    '''
+    Crea tablas en el esquema raw ejecutando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
@@ -67,7 +70,8 @@ def create_raw_tables(ctx):
 @moma.command()
 @click.pass_context
 def load_moma(ctx):
-    '''Carga los datos de MoMa en el esquema raw ejecutando comandos de SQL
+    '''
+    Carga los datos de MoMa en el esquema raw ejecutando comandos de SQL
    :param module ctx:  subclase del objeto dict
    :return:
    :rtype:
