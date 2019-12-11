@@ -2,11 +2,10 @@ create schema if not exists features;
 
 drop table if exists features.aggregated;
 
-
 create table if not exists features.aggregated as 
 			  (select 
 					classification,
-					count(distinct artworks) artworks
+					count(distinct artwork) artwork
 					, min(height) min_heigth
 			        , avg(height) mean_heigth
 				    , max(height) max_heigth
