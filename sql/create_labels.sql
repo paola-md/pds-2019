@@ -7,6 +7,7 @@ with outcomes as (
   select
     as_of_date,
     artwork,
+	classification,
     acquisition as event_date,
     classification = 'photograph' as outcome
     from
