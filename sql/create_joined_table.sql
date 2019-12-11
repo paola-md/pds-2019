@@ -21,6 +21,6 @@ create table if not exists finals.classify_photographs as (
 		label,
 		as_of_date
 	from labels.classified_department labs
-	join clean.artworks cleani 
+	join cleaned.artworks cleani 
 	on labs.artwork = cleani.artwork
 );
