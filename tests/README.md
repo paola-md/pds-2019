@@ -2,7 +2,7 @@
 
 Una vez que se ha ejecutado RUNME.sh, al conectarse a la base de datos de la siguiente manera
 ```
-psql -U moma- d moma -h 0.0.0.0 -W
+psql -U moma -d moma -h 0.0.0.0 -W
 ```
 
 Se podrán verificar los siguientes pasos del flujo de trabajo
