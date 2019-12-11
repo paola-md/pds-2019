@@ -181,6 +181,50 @@ Observamos que las tablas raw fueran creadas después de crear el esquema
  raw    │ artworks │ table │ moma
 (2 rows)
 ```
+Observamos los datos después de ejecutar el esquema de limpieza
+```
+ \d cleaned.artists
+                Table "cleaned.artists"
+   Column    │  Type   │ Collation │ Nullable │ Default 
+═════════════╪═════════╪═══════════╪══════════╪═════════
+ artist      │ integer │           │          │ 
+ artist_name │ text    │           │          │ 
+ nationality │ text    │           │          │ 
+ female      │ integer │           │          │ 
+ birth       │ date    │           │          │ 
+ death       │ date    │           │          │ 
+ wiki        │ text    │           │          │ 
+ ulan        │ integer │           │          │ 
+Indexes:
+    "cleaned_artists_artist_ix" btree (artist)
+    
+\d cleaned.artworks
+                    Table "cleaned.artworks"
+     Column     │     Type      │ Collation │ Nullable │ Default 
+════════════════╪═══════════════╪═══════════╪══════════╪═════════
+ title          │ text          │           │          │ 
+ artist         │ integer[]     │           │          │ 
+ creation       │ date          │           │          │ 
+ medium         │ text          │           │          │ 
+ creditline     │ text          │           │          │ 
+ accession      │ text          │           │          │ 
+ classification │ text          │           │          │ 
+ acquisition    │ date          │           │          │ 
+ cataloged      │ integer       │           │          │ 
+ department     │ text          │           │          │ 
+ artwork        │ integer       │           │          │ 
+ url            │ text          │           │          │ 
+ thumb_url      │ text          │           │          │ 
+ diameter       │ numeric(10,2) │           │          │ 
+ depth          │ numeric(10,2) │           │          │ 
+ height         │ numeric(10,2) │           │          │ 
+ width          │ numeric(10,2) │           │          │ 
+ duration       │ numeric(10,2) │           │          │ 
+Indexes:
+    "cleaned_artworks_artist_ix" btree (artist)
+    "cleaned_artworks_artwork_ix" btree (artwork)
+```
+
 
 ## Esto es para nosotros (después lo borramos)
 6.2 ¿ Qué debo de hacer?
