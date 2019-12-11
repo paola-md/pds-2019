@@ -48,4 +48,5 @@ new_artwork as(
 select * from
 new_artwork
 where "new?" is true 
+and daterange('01-01-2018'::date,'01-01-2020'::date) @>  acquisition
 )
