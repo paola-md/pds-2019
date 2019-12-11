@@ -1,6 +1,12 @@
 # Proyecto: Set de datos de "The Museum of Modern Art" (MoMA) 
 Para este proyecto usamos los datos del **museo de arte moderno**, puedes descagrar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
 
+### Situación retorica
+Después de largas platicas con los curadores del MoMa identificamos el problema. Aproximadamente 23% de las pieces adqueridas por el museo son fotografías. Para proteger las fotografías, se les agrega una capa de aglutinante que es muy caro, caduca muy rápido y tarda 2 meses en llegar al museo. Por un lado, el museo pierde dinero si tiene aglutinante de más ya que caduca y no se usa. Por otro lado, el museo también pierde dinero si le falta aglutinante ya que las piezas ocupan espacio y demoran los demás tratamientos. Asimismo, del momemnto en el que museo adquiere una pieza al momento en el que llega la pieza al museo transcurre en promedio 2 meses. Sin embargo, el museo no recibe si la obra es una fotografía o no, solo recibe la información de la obra como el titulo, autor y dimensiones. 
+
+Tomando eso en cuenta, el objetivo es predecir en esos 2 meses, cuántas fotografías llegarán al museo y de qué dimensiones. Es decir, una vez que la obra fue adquerida, utilizar la información para clasificarla como fotografía o no y poder pedir por adelantado la cantidad exacta de aglutinante que se va a usar. Como resultado, se esperan ahorros y beneficios para el MoMa.
+
+### Objetivo
 Nuestro objetivo es clasificar si una obra de arte entrante es fotografía o no. En este proyecto no se soluciona el anterior problema de Machine Learning, sin embargo se evalúa haciendo uso de Python, SQL y bash para crear y limpiar la base de datos de MoMA así como también crear nuevas features.
 
 ## Estrucura de la base de datos
