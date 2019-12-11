@@ -78,22 +78,57 @@ vagrant up
 vagrant ssh
 ```
 
-A continuación, creamos un ambiente virtual
+
+## Ejecución
+1. Clonar este repositorio 
+```
+$ git clone https://github.com/paola-md/pds-2019.git
+```
+
+2. Moverse dentro del repositorio
+```
+$ cd pds-2019
+```
+
+3. Configurar poetry
+```
+pyenv shell system
+curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+pyenv shell --unset
+source $HOME/.poetry/env
+```
+
+4. Ejecutar el archivo RUNME.sh que ejecuta moma.py con los scripts sql. 
+```
+$ ./RUNME.sh
+```
+
+## ¿Qué hace el archivo RUNME?
+1. Construye el ambiente virtual moma
+2. Crea la base de datos el psql
+3. Descarga los datos
+4. Corre los archivos SQL
+
+## ¿Cómo se hizo la magia?
+0. Carpetas
+Para crear la estructura de carpetas se utilizó el archivo scripts/estructura_python.sh que crea las carpetas y agrega un archivo vacío en cada una.
+
+1. Ambiente virtual
 ```
 pyenv virtualenv 3.7.3 moma
-echo ‘moma’ > .python-version 
+echo 'moma' > .python-version 
 ```
 Instalamos poetry
 ```
-pyenv shell system curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python 
-pyenv shell -unset 
+pyenv shell system
+curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+pyenv shell --unset
 ```
 Creamos el archivo pyproject.toml (contiene las especificaciones de versiones semánticas).
 ```
 poetry init 
-poetry add numpy --extras all 
-poetry add toml
-poetry add click 
+poetry add numpy
+poetry add dynaconf 
 poetry add --dev flake8 
 poetry add --dev flake8-docstrings 
 poetry add --dev xdoctest 
@@ -112,215 +147,52 @@ poetry add --dev sphinx_rtd_theme
 poetry add psycopg2 --extras all 
 ```
 
-## Ejecución
-1. Clonar este repositorio 
+En el RUNME esto no se ejecuta de nuevo. En cambio se utiliza el archivo pyproject.toml para instalar las dependencias
 ```
-$ git clone https://github.com/paola-md/pds-2019.git
+poetry install 
 ```
+
+
 2. Creamos base de datos
 ```
 $ sudo su postgres
 $ psql 
 $ create database moma;
 ```
-3. Creamos un rol 
+	- Creamos un rol 
 ```
 $ create role moma login ; 
 $ alter role moma with encrypted password 'marmol'; 
 $ grant all privileges on database moma to moma;
 ```
-Para conectarnos de forma remota usamos
+	- Para conectarnos de forma remota usamos
 ```
 $ psql -U moma- d moma -h 0.0.0.0 -W
 ```
-4. Una vez creada la base de datos, corremos el archivo
-RUNME.sh que ejecuta moma.py con los scripts sql. 
 
-## Workflow
+3. Los datos se descargan del repositorio del MoMa
+
+4. Los archivos SQL se corren a través del archivo moma.py.
+
+## Más sobre el flujo de trabajo
+El flujo de trabajo fue el siguiente
 1. create squemas
+	- Se crearon los esquemas para organizar las tablas
 2. create raw tables
+	- Se copiaron las columnas de las dos tablas de datos como tipo texto
+	* Se creo raw.artists y raw.artworks
 3. to cleaned
+	- Se elimiaron las variables redundantes y se codificó cada
+	* Se creo cleaned.artists y cleaned.artworks
 4. to semantic
-5. cohort new arrivals
+	- Se elimiaron las variables redundantes y se codificó cada
+	* Se creo cleaned.artists y cleaned.artworks
+5. cohort 
+	- Se elimiaron las variables redundantes y se codificó cada
+	* Se creo cleaned.artists y cleaned.artworks
 6. labels
+	- Se elimiaron las variables redundantes y se codificó cada
+	* Se creo cleaned.artists y cleaned.artworks
 7. features
-
-Verificamos si los esquemas fueron creados
-```
-\dn
-```
-La salida debería ser la siguiente:
-```
-   List of schemas
-   Name   │  Owner   
-══════════╪══════════
- cleaned  │ moma
- cohorts  │ moma
- features │ moma
- labels   │ moma
- public   │ postgres
- raw      │ moma
- semantic │ moma
-(7 rows)
-
-```
-* raw: copia de la base de datos de MoMA
-* cleaned: limpieza de la base de datos
-* semantic: tranformación de datos a entidades (classification) y eventos (Nueva llegada de obra de arte al museo)
-* cohort: define as_of_dates para un cierto periodo
-* labels: crea etiquetas para las observaciones de los periodos
-* features: creación de nuevas features
-
-Observamos que las tablas raw fueran creadas después de crear el esquema
-```
-\dt raw.
-```
-
-```
-         List of relations
- Schema │   Name   │ Type  │ Owner 
-════════╪══════════╪═══════╪═══════
- raw    │ artists  │ table │ moma
- raw    │ artworks │ table │ moma
-(2 rows)
-```
-Observamos los datos después de ejecutar el esquema de limpieza
-```
- \d cleaned.artists
-```
-
-```
-                Table "cleaned.artists"
-   Column    │  Type   │ Collation │ Nullable │ Default 
-═════════════╪═════════╪═══════════╪══════════╪═════════
- artist      │ integer │           │          │ 
- artist_name │ text    │           │          │ 
- nationality │ text    │           │          │ 
- female      │ integer │           │          │ 
- birth       │ date    │           │          │ 
- death       │ date    │           │          │ 
- wiki        │ text    │           │          │ 
- ulan        │ integer │           │          │ 
-Indexes:
-    "cleaned_artists_artist_ix" btree (artist)
-```
-
-    
-```    
-\d cleaned.artworks
-```
-
-```
-                    Table "cleaned.artworks"
-     Column     │     Type      │ Collation │ Nullable │ Default 
-════════════════╪═══════════════╪═══════════╪══════════╪═════════
- title          │ text          │           │          │ 
- artist         │ integer[]     │           │          │ 
- creation       │ date          │           │          │ 
- medium         │ text          │           │          │ 
- creditline     │ text          │           │          │ 
- accession      │ text          │           │          │ 
- classification │ text          │           │          │ 
- acquisition    │ date          │           │          │ 
- cataloged      │ integer       │           │          │ 
- department     │ text          │           │          │ 
- artwork        │ integer       │           │          │ 
- url            │ text          │           │          │ 
- thumb_url      │ text          │           │          │ 
- diameter       │ numeric(10,2) │           │          │ 
- depth          │ numeric(10,2) │           │          │ 
- height         │ numeric(10,2) │           │          │ 
- width          │ numeric(10,2) │           │          │ 
- duration       │ numeric(10,2) │           │          │ 
-Indexes:
-    "cleaned_artworks_artist_ix" btree (artist)
-    "cleaned_artworks_artwork_ix" btree (artwork)
-```
-En relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic.
-
-```
-\d semantic.entities
-```
-
-```
-               Table "semantic.entities"
-     Column     │ Type │ Collation │ Nullable │ Default 
-════════════════╪══════╪═══════════╪══════════╪═════════
- classification │ text │           │          │ 
-Indexes:
-    "semantic_entities_classification_ix" btree (classification)
-```
-
-```
-\d semantic.events 
-```
-
-```
-                     Table "semantic.events"
-     Column     │     Type      │ Collation │ Nullable │ Default 
-════════════════╪═══════════════╪═══════════╪══════════╪═════════
- title          │ text          │           │          │ 
- artist         │ integer[]     │           │          │ 
- creation       │ date          │           │          │ 
- medium         │ text          │           │          │ 
- creditline     │ text          │           │          │ 
- classification │ text          │           │          │ 
- acquisition    │ date          │           │          │ 
- cataloged      │ integer       │           │          │ 
- artwork        │ integer       │           │          │ 
- diameter       │ numeric(10,2) │           │          │ 
- depth          │ numeric(10,2) │           │          │ 
- height         │ numeric(10,2) │           │          │ 
- width          │ numeric(10,2) │           │          │ 
- duration       │ numeric(10,2) │           │          │ 
-Indexes:
-    "semantic_events_classification_ix" btree (classification)
-```
-
-Definimos el grupo de interés  new_arrivals y la periodicidad con la que se realizará la ejecución del algoritmo de ML en el esquema de cohorts. La estructura de la tabla es la siguiente:
-
-```
-\d cohorts.new_arrivals 
-```
-
-```
-                  Table "cohorts.new_arrivals"
-     Column     │     Type      │ Collation │ Nullable │ Default 
-════════════════╪═══════════════╪═══════════╪══════════╪═════════
- title          │ text          │           │          │ 
- artist         │ integer[]     │           │          │ 
- creation       │ date          │           │          │ 
- medium         │ text          │           │          │ 
- creditline     │ text          │           │          │ 
- classification │ text          │           │          │ 
- acquisition    │ date          │           │          │ 
- cataloged      │ integer       │           │          │ 
- artwork        │ integer       │           │          │ 
- diameter       │ numeric(10,2) │           │          │ 
- depth          │ numeric(10,2) │           │          │ 
- height         │ numeric(10,2) │           │          │ 
- width          │ numeric(10,2) │           │          │ 
- duration       │ numeric(10,2) │           │          │ 
- as_of_date     │ date          │           │          │ 
- new?           │ boolean       │           │          │ 
-```
-Crear etiquetas que nos ayudaran a clasificar en el futuro, en el esquema labels
-```
-\d labels.classified_department  
-
-```
-
-```
-         Table "labels.classified_department"
-   Column   │  Type   │ Collation │ Nullable │ Default 
-════════════╪═════════╪═══════════╪══════════╪═════════
- as_of_date │ date    │           │          │ 
- artwork    │ integer │           │          │ 
- label      │ integer │           │          │ 
-Indexes:
-    "labels_classified_department_artwork_as_of_date_ix" btree (artwork, as_of_date)
-    "labels_classified_department_artwork_ix" btree (artwork)
-    "labels_classified_department_as_of_date_ix" btree (as_of_date)
-```
-
-
+	- Se elimiaron las variables redundantes y se codificó cada
+	* Se creo cleaned.artists y cleaned.artworks
