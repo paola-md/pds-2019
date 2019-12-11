@@ -17,10 +17,9 @@ with outcomes as (
 select
   as_of_date
   , artwork
-  , classification
   , bool_or(outcome)::integer as label
   from outcomes
-  where daterange('01-01-2018'::date,'01-01-2020'::date) @>  event_date
+  -- where daterange('01-01-2018'::date,'01-01-2020'::date) @>  event_date
  group by as_of_date, artwork
 );
 
