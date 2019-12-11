@@ -1,26 +1,21 @@
 create schema if not exists features;
 
-drop table if exists features.aggregated cascade;
+drop table if exists features.aggregated;
+
 
 create table if not exists features.aggregated as 
-			  (select 
-					classification,
-					count(distinct artwork) artwork
-					, min(height) min_heigth
-			        , avg(height) mean_heigth
-				    , max(height) max_heigth
-					, min(diameter) min_diameter
-					, avg(diameter) mean_diameter
-					, max(diameter) max_diameter
-					, min(width) min_widht
-					, avg(width) mean_width
-					, max(width) max_width
-					, min(duration) min_duration
-					, avg(duration) avg_duration
-					, max(duration) max_duration
-				    , count(*) obras
-				  from semantic.events
-               group by classification );
+			  (select * from
+				(select as_of_date, classification from labels.classified_department) as aod
+					left join lateral (
+										select
+										count(*) filter (where daterange((aod.as_of_date - interval '2 month'):: date, aod.as_of_date::date) @>acquisition) as "COUNT(2 meses)"
+										,count(*) filter (where daterange((aod.as_of_date - interval '4 month'):: date,aod.as_of_date::date) @>acquisition) as "COUNT(4 meses)"
+										,count(*) as "totals"
+										from semantic.events where aod.classification=classification) 
+										as t2 on true
+				) t1
 			             
-create index features_aggregated_artwork_ix on features.aggregated(artwork);
+create index  labels_classified_department_artwork_ix on labels.classified_department(artwork);
+create index  labels_classified_department_as_of_date_ix on labels.classified_department(as_of_date);
+create index  labels_classified_department_artwork_as_of_date_ix on labels.classified_department(artwork, as_of_date);
 
