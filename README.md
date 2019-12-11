@@ -2,7 +2,12 @@
 Para este proyecto usamos los datos del **museo de arte moderno**, puedes descagrar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
 
 Nuestro objetivo es clasificar si una obra de arte entrante es fotografía o no. En este proyecto no se soluciona el anterior problema de Machine Learning, sin embargo se evalúa haciendo uso de Python, SQL y bash para crear y limpiar la base de datos de MoMA así como también crear nuevas features.
-## Descripción de Entidad
+
+## Estrucura de la base de datos
+La base de datos está estructurada en dos tablas: artists y artworks.
+Se pueden unir através de la variable ConstituentID que es un identificador único para los artistas. 
+
+## Descripción de los datos
 La figura muestra el diagrama entidad-relación (ERD) para la base de datos MoMa. Se muestran todos los atributos de las entidades.
 
 ![Alt text](results/entidad-relacion.png?raw=true "Title")
@@ -62,10 +67,6 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 |Duration..sec..|	duración de la obra de arte en segundos|	en caso de que aplique, en la mayoría de los casos no aplica|
 
 
-## Estrucura de la base de datos
-La base de datos está estructurada en dos tablas: artists y artworks.
-Se pueden unir através de la variable ConstituentID que es un identificador único para los artistas. 
-
 
 ## Instalación
 A través de Vagrant se puede ejecutar el proyecto. 
@@ -77,7 +78,6 @@ Para prender la máquina virtual:
 vagrant up
 vagrant ssh
 ```
-
 
 ## Ejecución
 1. Clonar este repositorio 
@@ -98,16 +98,17 @@ pyenv shell --unset
 source $HOME/.poetry/env
 ```
 
-4. Ejecutar el archivo RUNME.sh que ejecuta moma.py con los scripts sql. 
+4. Ejecutar el archivo RUNME.sh
 ```
 $ ./RUNME.sh
 ```
+5. Ver carpeta tests para la comprobación de las tablas que se crearon.
 
 ## ¿Qué hace el archivo RUNME?
-1. Construye el ambiente virtual moma
-2. Crea la base de datos el psql
-3. Descarga los datos
-4. Corre los archivos SQL
+1. Construye el ambiente virtual moma (create_virual_env.sh)
+2. Crea la base de datos el psql (create_db.sh)
+3. Descarga los datos (download_data.sh)
+4. Corre los archivos SQL (run_sql.sh)
 
 ## ¿Cómo se hizo la magia?
 0. Carpetas
@@ -151,7 +152,6 @@ En el RUNME esto no se ejecuta de nuevo. En cambio se utiliza el archivo pyproje
 ```
 poetry install 
 ```
-
 
 2. Creamos base de datos
 ```
