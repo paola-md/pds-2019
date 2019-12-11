@@ -1,6 +1,6 @@
-# Proyecto: Set de datos de "The Museum of Modern Art" (MoMa) 
+# Proyecto: Set de datos de "The Museum of Modern Art" (MoMA) 
 Para este proyecto usamos los datos del **museo de arte moderno**, puedes descagrar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
-
+Nuestro objetivo es clasificar si una obra de arte entrante es fotografía o no. En este proyecto no se soluciona el anterior problema de Machine Learning, sin embargo se evalúa haciendo uso de Python, SQL y bash para crear y limpiar la base de datos de MoMA así como también crear nuevas features.
 ## Descripción de Entidad
 La figura muestra el diagrama entidad-relación (ERD) para la base de datos MoMa. Se muestran todos los atributos de las entidades.
 
@@ -30,7 +30,7 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 
 |    elemento   |                         significado                         |                                     observación                                    |
 |:-------------:|:-----------------------------------------------------------:|:----------------------------------------------------------------------------------:|
-|Title|	titulo de la obra|  |	
+|Title|	título de la obra|  |	
 |Artist	|nombre y apellido del artista | |	
 |ConstituentID | identificador único de cada artista	| |
 |ArtistBio | concatena la nacionalidad con el año de nacimiento y muerte del artista	 | |
