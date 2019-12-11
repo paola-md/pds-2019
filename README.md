@@ -236,7 +236,7 @@ Indexes:
     "cleaned_artworks_artist_ix" btree (artist)
     "cleaned_artworks_artwork_ix" btree (artwork)
 ```
-En la relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic.
+En relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic.
 
 ```
 \d semantic.entities
@@ -304,7 +304,7 @@ Definimos el grupo de interés  new_arrivals y la periodicidad con la que se rea
  as_of_date     │ date          │           │          │ 
  new?           │ boolean       │           │          │ 
 ```
-Crear etiquetas que nos ayudaran a clasificar en el futuro en el esquema labels
+Crear etiquetas que nos ayudaran a clasificar en el futuro, en el esquema labels
 ```
 \d labels.classified_department  
 
