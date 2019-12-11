@@ -145,6 +145,31 @@ RUNME.sh que ejecuta moma.py con los scripts sql.
 6. labels
 7. features
 
+Verificamos si los esquemas fueron creados
+```
+\dn
+```
+La salida debería ser la siguiente:
+```
+   List of schemas
+   Name   │  Owner   
+══════════╪══════════
+ cleaned  │ moma
+ cohorts  │ moma
+ features │ moma
+ labels   │ moma
+ public   │ postgres
+ raw      │ moma
+ semantic │ moma
+(7 rows)
+
+```
+raw: copia de la base de datos de MoMA
+cleaned: limpieza de la base de datos
+semantic: tranformación de datos a entidades (artists, artworks) y eventos (Nueva llegada de obra de arte al museo)
+cohort: define as_of_dates para un cierto periodo
+labels: crea etiquetas para las observaciones de los periodos
+features: creación de nuevas features
 
 ## Esto es para nosotros (después lo borramos)
 6.2 ¿ Qué debo de hacer?
