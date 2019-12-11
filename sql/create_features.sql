@@ -15,7 +15,6 @@ create table if not exists features.aggregated as
 										as t2 on true
 				);
 			             
-create index  labels_classified_department_artwork_ix on labels.classified_department(artwork);
-create index  labels_classified_department_as_of_date_ix on labels.classified_department(as_of_date);
-create index  labels_classified_department_artwork_as_of_date_ix on labels.classified_department(artwork, as_of_date);
+create index  labels_features_aggregated_as_of_date_ix on features.aggregated(as_of_date);
+create index  labels_features_aggregated_classification_as_of_date_ix on features.aggregated(classification);
 
