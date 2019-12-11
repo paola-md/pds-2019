@@ -31,7 +31,7 @@ new_artwork as(
 		
 		aod.as_of_date::date,
 		daterange(
-		(aod.as_of_date - interval '4 month')::date,
+		(aod.as_of_date - interval '2 month')::date,
 		aod.as_of_date::date)
 		@> acquisition as "new?"
 	from (
@@ -49,4 +49,4 @@ select * from
 new_artwork
 where "new?" is true 
 and daterange('01-01-2018'::date,'01-01-2020'::date) @>  acquisition
-)
+);
