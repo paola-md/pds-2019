@@ -197,7 +197,10 @@ Observamos los datos después de ejecutar el esquema de limpieza
  ulan        │ integer │           │          │ 
 Indexes:
     "cleaned_artists_artist_ix" btree (artist)
+```
+
     
+```    
 \d cleaned.artworks
                     Table "cleaned.artworks"
      Column     │     Type      │ Collation │ Nullable │ Default 
@@ -224,7 +227,7 @@ Indexes:
     "cleaned_artworks_artist_ix" btree (artist)
     "cleaned_artworks_artwork_ix" btree (artwork)
 ```
-En la relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic
+En la relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic.
 
 ```
 \d semantic.entities
@@ -259,15 +262,29 @@ Indexes:
     "semantic_events_classification_ix" btree (classification)
 ```
 
-## Esto es para nosotros (después lo borramos)
-6.2 ¿ Qué debo de hacer?
-* Crear un repositorio (listo)
-* Crear estructura de carpetas para un proyecto en python (copiar turista y berka)
-* Escoger una fuente de datos (proponemos United States Sentencing Commission Individual Offender Data Sets)
-* Crear un README.md: Describir la entidad, Estructura de la base de
-datos, Instalación. Ejecución.
-* Cargar la base de datos a raw
-* Crear una versión limpia en cleaned
-* Crear el esquema semantic
-* Crear features temporales ligados a la entidad dadas las fechas del
-evento. Guardarlos en el esquema features
+Definimos el grupo de interés  new_arrivals y la periodicidad con la que se realizará la ejecución del algoritmo de ML en el esquema de cohorts. La estructura de la tabla es la siguiente:
+
+```
+cohorts.new_arrivals 
+                  Table "cohorts.new_arrivals"
+     Column     │     Type      │ Collation │ Nullable │ Default 
+════════════════╪═══════════════╪═══════════╪══════════╪═════════
+ title          │ text          │           │          │ 
+ artist         │ integer[]     │           │          │ 
+ creation       │ date          │           │          │ 
+ medium         │ text          │           │          │ 
+ creditline     │ text          │           │          │ 
+ classification │ text          │           │          │ 
+ acquisition    │ date          │           │          │ 
+ cataloged      │ integer       │           │          │ 
+ artwork        │ integer       │           │          │ 
+ diameter       │ numeric(10,2) │           │          │ 
+ depth          │ numeric(10,2) │           │          │ 
+ height         │ numeric(10,2) │           │          │ 
+ width          │ numeric(10,2) │           │          │ 
+ duration       │ numeric(10,2) │           │          │ 
+ as_of_date     │ date          │           │          │ 
+ new?           │ boolean       │           │          │ 
+```
+
+
