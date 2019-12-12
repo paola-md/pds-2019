@@ -198,7 +198,26 @@ Creamos características de las diferentes categorias.
 ```
 
 ```
+
                 Table "features.aggregated"
+     Column      │  Type  │ Collation │ Nullable │ Default
+═════════════════╪════════╪═══════════╪══════════╪═════════
+ as_of_date      │ date   │           │          │
+ classification  │ text   │           │          │
+ COUNT(2 meses)  │ bigint │           │          │
+ COUNT(4 meses)  │ bigint │           │          │
+ COUNT(8 meses)  │ bigint │           │          │
+ COUNT(16 meses) │ bigint │           │          │
+ totals          │ bigint │           │          │
+Indexes:
+    "labels_features_aggregated_as_of_date_ix" btree (as_of_date)
+    "labels_features_aggregated_classification_as_of_date_ix" btree (classification)
+  ```
+
+
+Creamos características agregados por fecha.
+ ```
+                 Table "features.summary"
      Column     │  Type   │ Collation │ Nullable │ Default
 ════════════════╪═════════╪═══════════╪══════════╪═════════
  classification │ text    │           │          │
@@ -217,7 +236,7 @@ Creamos características de las diferentes categorias.
  max_duration   │ numeric │           │          │
  obras          │ bigint  │           │          │
 Indexes:
-    "features_aggregated_artwork_ix" btree (artwork)
+    "features_summary_artwork_ix" btree (artwork)
 ```
 
 Algunos selects útiles para verificar la información
@@ -225,12 +244,13 @@ Algunos selects útiles para verificar la información
 ```
 select * from raw.artists limit 10;
 select * from raw.artworks limit 10;
-select * from clean.artworks limit 10;
-select * from clean.artists limit 10;
+select * from cleaned.artworks limit 10;
+select * from cleaned.artists limit 10;
 select * from semantic.entities  limit 10;
 select * from semantic.events  limit 10;
 select * from cohorts.new_arrivals  limit 10;
 select * from labels.classified_department  limit 10;
 select * from features.aggregated limit 10;
+select * from features.summary limit 10;
 ```
 

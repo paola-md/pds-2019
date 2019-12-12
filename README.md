@@ -1,17 +1,25 @@
 # Proyecto: Set de datos de "The Museum of Modern Art" (MoMA) 
-Para este proyecto usamos los datos del **museo de arte moderno**, puedes descagrar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
 
-### Situación retorica
-Después de largas platicas con los curadores del MoMa identificamos el problema. Aproximadamente 23% de las pieces adqueridas por el museo son fotografías. Para proteger las fotografías, se les agrega una capa de aglutinante que es muy caro, caduca muy rápido y tarda 2 meses en llegar al museo. Por un lado, el museo pierde dinero si tiene aglutinante de más ya que caduca y no se usa. Por otro lado, el museo también pierde dinero si le falta aglutinante ya que las piezas ocupan espacio y demoran los demás tratamientos. Asimismo, del momemnto en el que museo adquiere una pieza al momento en el que llega la pieza al museo transcurre en promedio 2 meses. Sin embargo, el museo no recibe si la obra es una fotografía o no, solo recibe la información de la obra como el titulo, autor y dimensiones. 
+El proyecto fue desarrollado por: 
 
-Tomando eso en cuenta, el objetivo es predecir en esos 2 meses, cuántas fotografías llegarán al museo y de qué dimensiones. Es decir, una vez que la obra fue adquerida, utilizar la información para clasificarla como fotografía o no y poder pedir por adelantado la cantidad exacta de aglutinante que se va a usar. Como resultado, se esperan ahorros y beneficios para el MoMa.
++ Danahi Ramos Martínez
++ Paola Mejía G.
++ Ana B. Coronel
+
+
+Para este proyecto usamos los datos del **museo de arte moderno Moma, por sus siglas en inglés**, puedes descargar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
+
+### Situación retórica
+Después de largas pláticas con los curadores del MoMa identificamos el problema. Aproximadamente 23% de las piezas adquiridas por el museo son fotografías. Para proteger las fotografías, se les agrega una capa de aglutinante que es muy caro, caduca muy rápido y tarda 2 meses en llegar al museo. Por un lado, el museo pierde dinero si tiene aglutinante de más ya que caduca y no se usa. Por otro lado, el museo también pierde dinero si le falta aglutinante ya que las piezas ocupan espacio y demoran los demás tratamientos. Asimismo, una vez que el museo adquiere una pieza, tarda 2 meses en ser entregada a éste. Sin embargo, el museo no recibe la clasificación de la obra, por ejemplo fotografía, pintura, etc. Únicamente recibe la información propia de la obra tal como: título, autor y dimensiones. 
+
+Tomando eso en cuenta, el objetivo es predecir en un intervalo de 2 meses, cuántas fotografías llegarán al museo y de qué dimensiones. Previo a esto, es necesario contar con un algoritmo que permita clasificar, a partir de información almancenada por el museo, si la obra adquirida es una fotografía y poder pedir por adelantado la cantidad exacta de aglutinante que se va a usar. Como resultado, se esperan ahorros y beneficios para el MoMa.
 
 ### Objetivo
-Nuestro objetivo es clasificar si una obra de arte entrante es fotografía o no. En este proyecto no se soluciona el anterior problema de Machine Learning, sin embargo se evalúa haciendo uso de Python, SQL y bash para crear y limpiar la base de datos de MoMA así como también crear nuevas features.
+Nuestro objetivo es clasificar si una obra de arte entrante es fotografía o no. En este proyecto no se soluciona el problema de Machine Learning; sin embargo, haciendo uso de Python, SQL y bash se crea y limpia la base de datos de MoMA así como se crean nuevas características o features para su posterior desarrollo.
 
 ## Estrucura de la base de datos
 La base de datos está estructurada en dos tablas: artists y artworks.
-Se pueden unir através de la variable ConstituentID que es un identificador único para los artistas. 
+Estas tablas se pueden unir a través de la variable ConstituentID que, como se verá en la descripción de los campos, es un identificador único para los artistas. 
 
 ## Descripción de los datos
 La figura muestra el diagrama entidad-relación (ERD) para la base de datos MoMa. Se muestran todos los atributos de las entidades.
@@ -75,8 +83,9 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 
 
 ## Instalación
-A través de Vagrant se puede ejecutar el proyecto. 
-Vagrant se debe descargar [aquí](https://www.vagrantup.com/downloads.html)
+El proyecto se puede ejecutar a través de Vagrant. 
+
+Vagrant se puede descargar [aquí](https://www.vagrantup.com/downloads.html)
 Archivos disponibles [aquí](https://github.com/ITAM-DS/programming-for-data-science-2019/tree/master/vagrant-ds)
 
 Para prender la máquina virtual:
@@ -91,7 +100,7 @@ vagrant ssh
 $ git clone https://github.com/paola-md/pds-2019.git
 ```
 
-2. Moverse dentro del repositorio
+2. Una vez dentro del repositorio, cambiarse al directorio **pds-2019**
 ```
 $ cd pds-2019
 ```
@@ -108,17 +117,20 @@ source $HOME/.poetry/env
 ```
 $ ./RUNME.sh
 ```
-5. Ver carpeta tests para la comprobación de las tablas que se crearon.
+5. En la carpeta **tests** de este repositorio se describen los pasos y así como el detall de los comandos para verificar que los esquemas y tablas hayan sido creados correctamente.
 
 ## ¿Qué hace el archivo RUNME?
+
 1. Construye el ambiente virtual moma (create_virual_env.sh)
-2. Crea la base de datos el psql (create_db.sh)
+2. Crea la base de datos en psql (create_db.sh)
 3. Descarga los datos (download_data.sh)
 4. Corre los archivos SQL (run_sql.sh)
 
 ## ¿Cómo se hizo la magia?
+
 0. Carpetas
-Para crear la estructura de carpetas se utilizó el archivo scripts/estructura_python.sh que crea las carpetas y agrega un archivo vacío en cada una.
+
+La estructura de las carpetas se construye utlizando el archivo scripts/estructura_python.sh que crea las carpetas y agrega un archivo vacío en cada una de ellas.
 
 1. Ambiente virtual
 ```
@@ -181,25 +193,39 @@ $ psql -U moma- d moma -h 0.0.0.0 -W
 4. Los archivos SQL se corren a través del archivo moma.py.
 
 ## Más sobre el flujo de trabajo
-El flujo de trabajo fue el siguiente
-1. create squemas
-	- Se crearon los esquemas para organizar las tablas
-	* esquemas: raw, cleaned, semantic, cohorts, labels, features     
+El flujo de trabajo se detalla a continuación. De manera general, se crean los esquemas y tablas necesarios: raw, clean, semantic. A partir del esquema **clean** es de donde se puede empezar a dar respuesta a las preguntas de negocio. 
+
+1. create schemas
+	- Creación de esquemas para la organización y generación de tablas.
+	* Esquemas creados: raw, cleaned, semantic, cohorts, labels, features     
+	
 2. create raw tables
-	- Se copiaron las columnas de las dos tablas de datos como tipo texto
-	* Se creo raw.artists y raw.artworks
+	- Creación de tablas para almacenar la información tal cual se obtuvo de MoMA
+	- Las columnas de las tablas se declaran como tipo texto
+	* Tablas creadas: raw.artists y raw.artworks
+	
 3. to cleaned
-	- Se elimiaron las variables redundantes y se codificó cada variable
-	* Se creo cleaned.artists y cleaned.artworks
+	- Renombre de los campos de las tablas y se espeficican en minúsculas
+	- Eliminación de variable redundantes tales como: dimensiones e información relacionada con la fecha de nacimiento del artista
+	- Codificación de varibles tal como el género. La variable toma el valor de 0 si es hombre y 1 en caso contrario
+	- Por buenas prácticas, las tablas se nombran en plural y los campos de artwork y artist en singular. Esto debido a que las primeras hacen referencia a un conjunto de elementos mientras que los útlimos se refieren a un elemento de los mismos. 
+	* Tablas creadas: cleaned.artists y cleaned.artworks
+	
 4. to semantic
-	- Se transformaron los datos a entidades y eventos
-	* entidad: classification; evento: llegada de una obra de arte al múseo
+	- Definición y creación de entidades y eventos
+	* Entidad: classification, es decir, la categoría en la que se clasifica la obra; 
+	* Evento: llegada de una obra de arte al museo
+	
 5. cohort 
-	- Se selecciona el grupo que se clasificará y la periodicidad con la que se realizará la clasificación
-	* periodicidad 2 meses, grupo a clasificar: nuevas obras entrantes al museo 
+	- Selección del grupo que se clasificará así como la periodicidad con la que se realizará la clasificación
+	* periodicidad 2 meses; 
+	* grupo a clasificar: nuevas obras entrantes al museo. En particular, si las obras son fotografías o no tal y como se menciona en el objetivo del proyecto. 
+	
 6. labels
-	- Se crean etiquetas de las observaciones en cada periodo
-	* etiqueta 'photograph'
+	- Creación de etiquetas de las observaciones en cada periodo
+	* etiqueta: 'photograph'
+	
 7. features
-	- Se crean nuevas features que ayuden a clasificar las observaciones
+	- Creación de características o features que ayuden a clasificar las observaciones. Se detallan estadísticos tales como mínimo, promedio y máximo por clasificación. 
+	- Creación de total de obras por clasificación en la periodicidad definida de 2 meses. 
 	
