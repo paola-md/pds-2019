@@ -7,7 +7,7 @@ El proyecto fue desarrollado por:
 + Ana B. Coronel
 
 
-Para este proyecto usamos los datos del **museo de arte moderno**, puedes descagrar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
+Para este proyecto usamos los datos del **museo de arte moderno Moma, por sus siglas en inglés**, puedes descargar una copia de la base [aquí](https://github.com/MuseumofModernArt/collection). Referencia: [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.3524700.svg)](http://dx.doi.org/10.5281/zenodo.3524700)
 
 ### Situación retórica
 Después de largas pláticas con los curadores del MoMa identificamos el problema. Aproximadamente 23% de las piezas adquiridas por el museo son fotografías. Para proteger las fotografías, se les agrega una capa de aglutinante que es muy caro, caduca muy rápido y tarda 2 meses en llegar al museo. Por un lado, el museo pierde dinero si tiene aglutinante de más ya que caduca y no se usa. Por otro lado, el museo también pierde dinero si le falta aglutinante ya que las piezas ocupan espacio y demoran los demás tratamientos. Asimismo, una vez que el museo adquiere una pieza, tarda 2 meses en ser entregada a éste. Sin embargo, el museo no recibe la clasificación de la obra, por ejemplo fotografía, pintura, etc. Únicamente recibe la información propia de la obra tal como: título, autor y dimensiones. 
@@ -117,7 +117,7 @@ source $HOME/.poetry/env
 ```
 $ ./RUNME.sh
 ```
-5. Ver carpeta tests para la comprobación de las tablas que se crearon.
+5. En la carpeta **tests** de este repositorio se describen los pasos y así como el detall de los comandos para verificar que los esquemas y tablas hayan sido creados correctamente.
 
 ## ¿Qué hace el archivo RUNME?
 
@@ -193,25 +193,39 @@ $ psql -U moma- d moma -h 0.0.0.0 -W
 4. Los archivos SQL se corren a través del archivo moma.py.
 
 ## Más sobre el flujo de trabajo
-El flujo de trabajo fue el siguiente
-1. create squemas
-	- Se crearon los esquemas para organizar las tablas
-	* esquemas: raw, cleaned, semantic, cohorts, labels, features     
+El flujo de trabajo se detalla a continuación. De manera general, se crean los esquemas y tablas necesarios: raw, clean, semantic. A partir del esquema **clean** es de donde se puede empezar a dar respuesta a las preguntas de negocio. 
+
+1. create schemas
+	- Creación de esquemas para la organización y generación de tablas.
+	* Esquemas creados: raw, cleaned, semantic, cohorts, labels, features     
+	
 2. create raw tables
-	- Se copiaron las columnas de las dos tablas de datos como tipo texto
-	* Se creo raw.artists y raw.artworks
+	- Creación de tablas para almacenar la información tal cual se obtuvo de MoMA
+	- Las columnas de las tablas se declaran como tipo texto
+	* Tablas creadas: raw.artists y raw.artworks
+	
 3. to cleaned
-	- Se elimiaron las variables redundantes y se codificó cada variable
-	* Se creo cleaned.artists y cleaned.artworks
+	- Renombre de los campos de las tablas y se espeficican en minúsculas
+	- Eliminación de variable redundantes tales como: dimensiones e información relacionada con la fecha de nacimiento del artista
+	- Codificación de varibles tal como el género. La variable toma el valor de 0 si es hombre y 1 en caso contrario
+	- Por buenas prácticas, las tablas se nombran en plural y los campos de artwork y artist en singular. Esto debido a que las primeras hacen referencia a un conjunto de elementos mientras que los útlimos se refieren a un elemento de los mismos. 
+	* Tablas creadas: cleaned.artists y cleaned.artworks
+	
 4. to semantic
-	- Se transformaron los datos a entidades y eventos
-	* entidad: classification; evento: llegada de una obra de arte al múseo
+	- Definición y creación de entidades y eventos
+	* Entidad: classification, es decir, la categoría en la que se clasifica la obra; 
+	* Evento: llegada de una obra de arte al museo
+	
 5. cohort 
-	- Se selecciona el grupo que se clasificará y la periodicidad con la que se realizará la clasificación
-	* periodicidad 2 meses, grupo a clasificar: nuevas obras entrantes al museo 
+	- Selección del grupo que se clasificará así como la periodicidad con la que se realizará la clasificación
+	* periodicidad 2 meses; 
+	* grupo a clasificar: nuevas obras entrantes al museo. En particular, si las obras son fotografías o no tal y como se menciona en el objetivo del proyecto. 
+	
 6. labels
-	- Se crean etiquetas de las observaciones en cada periodo
-	* etiqueta 'photograph'
+	- Creación de etiquetas de las observaciones en cada periodo
+	* etiqueta: 'photograph'
+	
 7. features
-	- Se crean nuevas features que ayuden a clasificar las observaciones
+	- Creación de características o features que ayuden a clasificar las observaciones. Se detallan estadísticos tales como mínimo, promedio y máximo por clasificación. 
+	- Creación de total de obras por clasificación en la periodicidad definida de 2 meses. 
 	
