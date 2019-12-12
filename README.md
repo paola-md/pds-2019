@@ -51,7 +51,7 @@ Puedes consultar más información [aquí](https://github.com/MuseumofModernArt/
 |    elemento   |                         significado                         |                                     observación                                    |
 |:-------------:|:-----------------------------------------------------------:|:----------------------------------------------------------------------------------:|
 |Title|	título de la obra|  |	
-|Artist	|nombre y apellido del artista | |	
+|Artist	|nombre y apellido del artista | Se observan múltiples autores para una misma obra de arte |	
 |ConstituentID | identificador único de cada artista	| |
 |ArtistBio | concatena la nacionalidad con el año de nacimiento y muerte del artista	 | |
 |Nationality|	nacionalidad del artista | |	
@@ -166,7 +166,7 @@ poetry add --dev sphinx_rtd_theme
 poetry add psycopg2 --extras all 
 ```
 
-En el RUNME esto no se ejecuta de nuevo. En cambio se utiliza el archivo pyproject.toml para instalar las dependencias
++ *En el RUNME esto no se ejecuta de nuevo. En cambio se utiliza el archivo pyproject.toml para instalar las dependencias.*
 ```
 poetry install 
 ```
