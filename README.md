@@ -3,7 +3,7 @@
 El proyecto fue desarrollado por: 
 
 + Danahi Ramos Martínez
-+ Paola Mejía G.
++ Paola Mejía Domenzain
 + Ana B. Coronel
 
 
