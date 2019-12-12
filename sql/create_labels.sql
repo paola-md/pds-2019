@@ -20,7 +20,6 @@ select
   , classification
   , bool_or(outcome)::integer as label
   from outcomes
-  -- where daterange('01-01-2010'::date,'01-01-2020'::date) @>  event_date
  group by as_of_date, artwork, classification
 );
 
