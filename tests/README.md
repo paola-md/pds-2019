@@ -1,11 +1,12 @@
 # Pruebas de SQL
 
-Una vez que se ha ejecutado RUNME.sh, al conectarse a la base de datos de la siguiente manera
+Una vez ejecutado RUNME.sh, nos podemos conectar a la base de datos con el siguiente comando: 
 ```
 psql -U moma -d moma -h 0.0.0.0 -W
 ```
 
 Se podrán verificar los siguientes pasos del flujo de trabajo
+
 1. create squemas
 2. create raw tables
 3. to cleaned
@@ -14,7 +15,7 @@ Se podrán verificar los siguientes pasos del flujo de trabajo
 6. labels
 7. features
 
-Verificamos si los esquemas fueron creados
+Verificación de la creación de los esquemas:
 ```
 \dn
 ```
@@ -35,7 +36,7 @@ La salida debería ser la siguiente:
 ```
 * raw: copia de la base de datos de MoMA
 * cleaned: limpieza de la base de datos
-* semantic: tranformación de datos a entidades (classification) y eventos (Nueva llegada de obra de arte al museo)
+* semantic: tranformación de datos a entidades (classification) y eventos (Llegada de obra de arte al museo)
 * cohort: define as_of_dates para un cierto periodo
 * labels: crea etiquetas para las observaciones de los periodos
 * features: creación de nuevas features
@@ -105,7 +106,7 @@ Indexes:
     "cleaned_artworks_artist_ix" btree (artist)
     "cleaned_artworks_artwork_ix" btree (artwork)
 ```
-En relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento, dentro del esquema semantic.
+En relación a nuestro objetivo sobre clasificar si una obra de arte entrante es fotografía o no, seleccionamos classification como entidad y la entrada de una nueva obra al museo como evento. Esto se realiza dentro del esquema **semantic**.
 
 ```
 \d semantic.entities
@@ -215,7 +216,7 @@ Indexes:
   ```
 
 
-Creamos características agregados por fecha.
+Creamos características agregados por clasifiación.
  ```
                  Table "features.summary"
      Column     │  Type   │ Collation │ Nullable │ Default
@@ -239,7 +240,7 @@ Indexes:
     "features_summary_artwork_ix" btree (artwork)
 ```
 
-Algunos selects útiles para verificar la información
+Algunos comandos útiles para verificar la información y observar algunos registros: 
 
 ```
 select * from raw.artists limit 10;
